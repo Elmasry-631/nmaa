@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- List View -->
+    <record id="view_actual_return_list" model="ir.ui.view">
+        <field name="name">investment.actual.return.list</field>
+        <field name="model">investment.actual.return</field>
+        <field name="arch" type="xml">
+            <list decoration-success="state == 'paid'" decoration-muted="state == 'cancelled'">
+                <field name="name"/>
+                <field name="period_name"/>
+                <field name="partner_id"/>
+                <field name="project_id"/>
+                <field name="expected_amount"/>
+                <field name="actual_amount"/>
+                <field name="difference" decoration-danger="difference &lt; 0" decoration-success="difference &gt; 0"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_actual_return_form" model="ir.ui.view">
+        <field name="name">investment.actual.return.form</field>
+        <field name="model">investment.actual.return</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_register_payment" type="object" 
+                            string="Register Payment" 
+                            invisible="state != 'draft'"
+                            class="btn-primary"/>
+                    
+                    <button name="action_cancel" type="object" 
+                            string="Cancel" 
+                            invisible="state in ('cancelled')"
+                            class="btn-danger"/>
+                    
+                    <field name="state" widget="statusbar"/>
+                </header>
+                
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    
+                    <group>
+                        <group>
+                            <field name="subscription_id"/>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="project_id" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="period_name"/>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+                    
+                    <group string="Amounts">
+                        <group>
+                            <field name="expected_amount"/>
+                            <field name="actual_amount"/>
+                        </group>
+                        <group>
+                            <field name="difference" 
+                                   decoration-danger="difference &lt; 0" 
+                                   decoration-success="difference &gt; 0"/>
+                        </group>
+                    </group>
+                    
+                    <group string="Payment">
+                        <field name="payment_journal_id" invisible="state != 'draft'"/>
+                        <field name="payment_id" readonly="1"/>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_actual_return_search" model="ir.ui.view">
+        <field name="name">investment.actual.return.search</field>
+        <field name="model">investment.actual.return</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="project_id"/>
+                <field name="period_name"/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Paid" name="paid" domain="[('state', '=', 'paid')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Project" name="project" context="{'group_by': 'project_id'}"/>
+                    <filter string="Investor" name="investor" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Period" name="period" context="{'group_by': 'period_name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_actual_return" model="ir.actions.act_window">
+        <field name="name">Return Payments</field>
+        <field name="res_model">investment.actual.return</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_actual_return_search"/>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_actual_return" name="Return Payments" parent="menu_investment_root" action="action_actual_return" sequence="6"/>
+</odoo>

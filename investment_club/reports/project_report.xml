@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Report Action -->
+    <record id="action_project_summary_report" model="ir.actions.report">
+        <field name="name">Project Summary</field>
+        <field name="model">investment.project</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">investment_club.project_summary</field>
+        <field name="report_file">investment_club.project_summary</field>
+        <field name="print_report_name">'Project Summary - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_investment_project"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

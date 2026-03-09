@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- List View -->
+    <record id="view_investment_subscription_list" model="ir.ui.view">
+        <field name="name">investment.subscription.list</field>
+        <field name="model">investment.subscription</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="project_id"/>
+                <field name="share_count"/>
+                <field name="amount"/>
+                <field name="expected_monthly_return"/>
+                <field name="total_actual_returns"/>
+                <field name="payment_state" widget="badge"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_investment_subscription_form" model="ir.ui.view">
+        <field name="name">investment.subscription.form</field>
+        <field name="model">investment.subscription</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_register_payment" type="object" 
+                            string="Register Payment" 
+                            invisible="state != 'draft'"
+                            class="btn-primary"/>
+                    
+                    <button name="action_activate" type="object" 
+                            string="Activate Investment" 
+                            invisible="state != 'paid'"
+                            class="btn-success"/>
+                    
+                    <button name="action_create_return" type="object" 
+                            string="Create Return Payment" 
+                            invisible="state != 'active'"
+                            class="btn-secondary"/>
+                    
+                    <button name="action_close" type="object" 
+                            string="Close" 
+                            invisible="state != 'active'"
+                            class="btn-secondary"/>
+                    
+                    <button name="action_cancel" type="object" 
+                            string="Cancel" 
+                            invisible="state in ('closed', 'cancelled')"
+                            class="btn-danger"/>
+                    
+                    <field name="state" widget="statusbar"/>
+                </header>
+                
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    
+                    <group>
+                        <group string="Investment Info">
+                            <field name="membership_id"/>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="club_id" readonly="1"/>
+                            <field name="project_id"/>
+                            <field name="investment_date"/>
+                        </group>
+                        
+                        <group string="Financials">
+                            <field name="share_count"/>
+                            <field name="share_value"/>
+                            <field name="amount"/>
+                            <field name="expected_monthly_return"/>
+                            <field name="analytic_account_id"/>
+                        </group>
+                    </group>
+                    
+                    <group string="Returns Summary">
+                        <group>
+                            <field name="total_actual_returns"/>
+                            <field name="last_return_date"/>
+                        </group>
+                    </group>
+                    
+                    <group string="Payment">
+                        <group>
+                            <field name="payment_journal_id" invisible="state != 'draft'"/>
+                            <field name="payment_id" readonly="1"/>
+                            <field name="payment_state" widget="badge"/>
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Actual Returns History">
+                            <field name="actual_return_ids">
+                                <list>
+                                    <field name="period_name"/>
+                                    <field name="date_from"/>
+                                    <field name="expected_amount"/>
+                                    <field name="actual_amount"/>
+                                    <field name="state" widget="badge"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_investment_subscription_search" model="ir.ui.view">
+        <field name="name">investment.subscription.search</field>
+        <field name="model">investment.subscription</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="project_id"/>
+                <field name="membership_id"/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Paid" name="paid" domain="[('state', '=', 'paid')]"/>
+                <filter string="Active" name="active" domain="[('state', '=', 'active')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Project" name="project" context="{'group_by': 'project_id'}"/>
+                    <filter string="Investor" name="investor" context="{'group_by': 'partner_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_investment_subscription" model="ir.actions.act_window">
+        <field name="name">Investments</field>
+        <field name="res_model">investment.subscription</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_investment_subscription_search"/>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_investment_subscription" name="Investments" parent="menu_investment_root" action="action_investment_subscription" sequence="4"/>
+</odoo>

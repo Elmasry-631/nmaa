@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_monthly_returns_pdf" model="ir.actions.report">
+        <field name="name">Monthly Returns PDF</field>
+        <field name="model">investment.subscription</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">investment_club.monthly_returns</field>
+        <field name="report_file">investment_club.monthly_returns</field>
+        <field name="print_report_name">'Monthly Returns Report'</field>
+    </record>
+</odoo>

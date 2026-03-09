@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <template id="contract_custom_print_template">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="doc">
+        <t t-call="web.basic_layout">
+          <div class="page" direction="rtl" style="dir: rtl;">
+            <!-- Title -->
+            <h2 class="text-center" style="margin-bottom: 30px;" t-esc="doc.contract_title_name.name or 'Contract'"/>
+            <!-- Contract Info -->
+            <div class="mb-2" style="direction:rtl;">
+              <strong>رقم العقد :</strong>
+              <span t-esc="doc.name"/>
+            </div>
+            <div class="mb-4" style="direction:rtl;">
+              <span  t-esc="doc.get_arabic_date()"/>
+            </div>
+            <!-- Parties Info -->
+            <div class="mb-4">
+                    <p style="direction:rtl;">
+                        <strong>تم الاتفاق بين كل من:</strong>
+                        <br/>
+                        <span t-field="doc.first_party_name"/> <t t-if="doc.first_party_id.company_registry">
+                            سجل تجاري رقم (<span t-field="doc.first_party_id.first_party_registry"/>)
+                        </t>
+
+                        <br/>
+                        <strong>ومقرها القانوني:</strong>
+                        <span t-field="doc.first_party_address"/>
+                        <br/>
+                        <strong>ويمثلها قانوناً فى إبرام هذا العقد والتوقيع عليه السيد /</strong>
+                        <span t-field="doc.first_party_id.child_ids[0].name" t-if="doc.first_party_id.child_ids"/>
+                        <t t-else="">..........................................</t>
+                    </p>
+                <span>  (طرف اول منتفع )</span>
+
+               <p style="margin-top: 15px; direction: rtl; text-align: right;">
+                    <strong>السيد / </strong>
+                    <span t-field="doc.second_party_name"/>
+
+                    <strong> المقيم في / </strong>
+                    <span t-field="doc.second_party_address"/>
+
+                    <br/>
+                    <strong>رقم قومي / </strong>
+                    <span t-field="doc.second_party_id_card"/>
+                </p>
+                <span>( طرف تانى - الشريك )</span>
+
+
+            </div>
+            <!-- Contract Items -->
+            <div class="mb-4">
+            </div>
+            <div style="height: 1px;"></div>
+            <!-- Terms -->
+            <div class="mb-4" style="direction:rtl;">
+              <div t-raw="doc.agreement_terms" class="ml-3"/></div>
+            <div class="mt-5" style="direction:rtl;">
+              <strong>التوقيعات :</strong>
+              <div class="row mt-3">
+                <!-- First Party Signature -->
+                <div class="col-6 text-center">
+                  <p>
+                    <strong>توقيع الطرف الاول :</strong>
+                  </p>
+                  <t t-if="doc.first_party_signature">
+                  <img t-if="doc.first_party_signature"
+                       t-att-src="'/web/image/%s/%s/first_party_signature' % (doc._name, doc.id)"
+                       style="max-height:80px; border:1px solid #ccc; padding:5px;"/>
+                  </t>
+                  <t t-else="">
+                    <div style="height: 80px; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center; color: #999; font-size: 12px;">                                    </div>
+                  </t>
+                </div>
+                <!-- Second Party Signature -->
+                <div class="col-6 text-center">
+                  <p>
+                    <strong>توقيع الطرف الثاني :</strong>
+                  </p>
+                  <t t-if="doc.second_party_signature">
+                    <img t-if="doc.second_party_signature"
+     t-att-src="'/web/image/%s/%s/second_party_signature' % (doc._name, doc.id)"
+     style="max-height:80px; border:1px solid #ccc; padding:5px;"/>
+
+
+                  </t>
+                  <t t-else="">
+                    <div style="height: 80px; border: 1px dashed #ccc; display: flex; align-items: center; justify-content: center; color: #999; font-size: 12px;">                                    </div>
+                  </t>
+                </div>
+              </div>
+            </div>
+          </div>
+        </t>
+      </t>
+    </t>
+  </template>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="paperformat_sale_contract" model="report.paperformat">
+        <field name="name">Sale Contract Paper</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+
+        <field name="margin_top">20</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">15</field>
+        <field name="margin_right">15</field>
+
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">10</field>
+
+        <field name="dpi">90</field>
+    </record>
+    <record id="action_print_sale_contract" model="ir.actions.report">
+        <field name="name">Contract</field>
+        <field name="model">sale.contract</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sale_contract_auto.contract_custom_print_template</field>
+        <field name="report_file">sale_contract_auto.contract_custom_print_template</field>
+        <field name="binding_model_id" ref="model_sale_contract"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="sale_contract_auto.paperformat_sale_contract"/>
+    </record>
+
+
+</odoo>

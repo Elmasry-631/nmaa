@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_investment_club_list" model="ir.ui.view">
+        <field name="name">investment.club.list</field>
+        <field name="model">investment.club</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="active_members_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_investment_club_form" model="ir.ui.view">
+        <field name="name">investment.club.form</field>
+        <field name="model">investment.club</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="code" readonly="1"/>
+                        </h1>
+                        <h2>
+                            <field name="name" placeholder="Club Name (e.g. Elite, Retail)"/>
+                        </h2>
+                    </div>
+                    <notebook>
+                        <page string="Projects">
+                            <field name="project_ids">
+                                <list>
+                                    <field name="code"/>
+                                    <field name="name"/>
+                                    <field name="analytic_account_id"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Members">
+                            <field name="member_ids">
+                                <list>
+                                    <field name="membership_number"/>
+                                    <field name="partner_id"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_investment_club_search" model="ir.ui.view">
+        <field name="name">investment.club.search</field>
+        <field name="model">investment.club</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="code"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_investment_club" model="ir.actions.act_window">
+        <field name="name">Investment Clubs</field>
+        <field name="res_model">investment.club</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_investment_root" name="Investment" sequence="10"/>
+    <menuitem id="menu_investment_club" name="Clubs" parent="menu_investment_root" action="action_investment_club" sequence="1"/>
+</odoo>

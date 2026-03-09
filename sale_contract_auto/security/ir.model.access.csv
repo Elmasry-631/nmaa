@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_contract_user,sale.contract.user,model_sale_contract,base.group_user,1,0,0,0
+access_sale_contract_manager,sale.contract.manager,model_sale_contract,sales_team.group_sale_manager,1,1,1,1
+access_sale_contract_account_manager,sale.contract.account.manager,model_sale_contract,account.group_account_manager,1,1,1,1
+access_sale_contract_portal,sale.contract.portal,model_sale_contract,base.group_portal,1,1,0,0
+access_sale_contract_line_user,sale.contract.line.user,model_sale_contract_line,base.group_user,1,0,0,0
+access_sale_contract_line_manager,sale.contract.line.manager,model_sale_contract_line,sales_team.group_sale_manager,1,1,1,1
+access_sale_contract_line_account_manager,sale.contract.line.account.manager,model_sale_contract_line,account.group_account_manager,1,1,1,1
+access_contract_template_user,contract.template.user,model_contract_template,base.group_user,1,0,0,0
+access_contract_template_manager,contract.template.manager,model_contract_template,sales_team.group_sale_manager,1,1,1,1
+access_sale_contract_title,sale.contract.title,model_sale_contract_title,,1,1,1,1

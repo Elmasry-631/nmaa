@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ==================== ACTIONS ==================== -->
+    
+    <!-- 1. Renewal Due Action -->
+    <record id="action_renewal_due_window" model="ir.actions.act_window">
+        <field name="name">Renewal Due Report</field>
+        <field name="res_model">investment.membership</field>
+        <field name="view_mode">list</field>
+        <field name="domain">[('renewal_status', 'in', ['due', 'overdue'])]</field>
+        <field name="context">{'search_default_renewal_due': 1}</field>
+    </record>
+    
+    <!-- 2. Monthly Returns Action -->
+    <record id="action_monthly_returns_window" model="ir.actions.act_window">
+        <field name="name">Monthly Returns Report</field>
+        <field name="res_model">investment.subscription</field>
+        <field name="view_mode">list</field>
+        <field name="domain">[('state', '=', 'active')]</field>
+        <field name="context">{'group_by': 'project_id'}</field>
+    </record>
+    
+    <!-- 3. Investor Summary Action -->
+    <record id="action_investor_summary_window" model="ir.actions.act_window">
+        <field name="name">Investor Summary Report</field>
+        <field name="res_model">investment.membership</field>
+        <field name="view_mode">list</field>
+        <field name="domain">[('state', '=', 'active')]</field>
+        <field name="context">{'group_by': 'club_id'}</field>
+    </record>
+    
+    <!-- 4. Active Investments Action -->
+    <record id="action_active_investments_window" model="ir.actions.act_window">
+        <field name="name">Active Investments</field>
+        <field name="res_model">investment.subscription</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('state', '=', 'active')]</field>
+    </record>
+    
+    <!-- 5. All Investors Action -->
+    <record id="action_all_investors_window" model="ir.actions.act_window">
+        <field name="name">All Investors</field>
+        <field name="res_model">investment.membership</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('state', '=', 'active')]</field>
+    </record>
+    
+    <!-- ==================== MENU ==================== -->
+    
+    <!-- Main Reports Menu -->
+    <menuitem id="menu_reports_root" 
+              name="Reports" 
+              parent="menu_investment_root" 
+              sequence="20"/>
+    
+    <!-- 1. Renewal Due -->
+    <menuitem id="menu_renewal_due_report" 
+              name="1. Renewal Due" 
+              parent="menu_reports_root" 
+              action="action_renewal_due_window" 
+              sequence="1"/>
+    
+    <!-- 2. Monthly Returns -->
+    <menuitem id="menu_monthly_returns_report" 
+              name="2. Monthly Returns" 
+              parent="menu_reports_root" 
+              action="action_monthly_returns_window" 
+              sequence="2"/>
+    
+    <!-- 3. Investor Summary -->
+    <menuitem id="menu_investor_summary_report" 
+              name="3. Investor Summary" 
+              parent="menu_reports_root" 
+              action="action_investor_summary_window" 
+              sequence="3"/>
+    
+    <!-- 4. Active Investments -->
+    <menuitem id="menu_active_investments_report" 
+              name="4. Active Investments" 
+              parent="menu_reports_root" 
+              action="action_active_investments_window" 
+              sequence="4"/>
+    
+    <!-- 5. All Investors -->
+    <menuitem id="menu_all_investors_report" 
+              name="5. All Investors" 
+              parent="menu_reports_root" 
+              action="action_all_investors_window" 
+              sequence="5"/>
+</odoo>

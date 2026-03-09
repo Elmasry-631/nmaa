@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Club Sequence -->
+        <record id="seq_investment_club" model="ir.sequence">
+            <field name="name">Investment Club</field>
+            <field name="code">investment.club</field>
+            <field name="prefix">CLUB/%(year)s/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Project Sequence -->
+        <record id="seq_investment_project" model="ir.sequence">
+            <field name="name">Investment Project</field>
+            <field name="code">investment.project</field>
+            <field name="prefix">PROJ/%(year)s/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Membership Sequence -->
+        <record id="seq_investment_membership" model="ir.sequence">
+            <field name="name">Investment Membership</field>
+            <field name="code">investment.membership</field>
+            <field name="prefix">MEM/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Investment Subscription Sequence -->
+        <record id="seq_investment_subscription" model="ir.sequence">
+            <field name="name">Investment Subscription</field>
+            <field name="code">investment.subscription</field>
+            <field name="prefix">INV/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Actual Return Sequence -->
+        <record id="seq_actual_return" model="ir.sequence">
+            <field name="name">Actual Return</field>
+            <field name="code">investment.actual.return</field>
+            <field name="prefix">RET/%(year)s/%(month)s/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>
