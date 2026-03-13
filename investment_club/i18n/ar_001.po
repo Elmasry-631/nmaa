@@ -1,0 +1,1251 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* investment_club
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-12 14:57+0000\n"
+"PO-Revision-Date: 2026-03-12 14:57+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: investment_club
+#: model:ir.actions.report,print_report_name:investment_club.action_investor_summary_pdf
+msgid "'Investor Summary'"
+msgstr "ملخص الاستثمار"
+
+#. module: investment_club
+#: model:ir.actions.report,print_report_name:investment_club.action_monthly_returns_pdf
+msgid "Monthly Returns Report"
+msgstr "تقرير العوائد الشهرية"
+
+#. module: investment_club
+#: model:ir.actions.report,print_report_name:investment_club.action_project_profit_pdf
+msgid "Project Profit and Loss - %s"
+msgstr "الأرباح والخسائر للمشروع - %s"
+
+#. module: investment_club
+#: model:ir.actions.report,print_report_name:investment_club.action_project_summary_report
+msgid "Project Summary - %s"
+msgstr "ملخص المشروع - %s"
+
+#. module: investment_club
+#: model:ir.actions.report,print_report_name:investment_club.action_renewal_due_pdf
+msgid "Renewal Due Report"
+msgstr "تقرير الاستحقاقات القادمة للتجديد"
+
+#. module: investment_club
+#: model:ir.ui.menu,name:investment_club.menu_renewal_due_report
+msgid "1. Renewal Due"
+msgstr "1. مستحق التجديد"
+
+#. module: investment_club
+#: model:ir.ui.menu,name:investment_club.menu_monthly_returns_report
+msgid "2. Monthly Returns"
+msgstr "2. العوائد الشهرية"
+
+#. module: investment_club
+#: model:ir.ui.menu,name:investment_club.menu_investor_summary_report
+msgid "3. Investor Summary"
+msgstr "3. ملخص المستثمر"
+
+#. module: investment_club
+#: model:ir.ui.menu,name:investment_club.menu_active_investments_report
+msgid "4. Active Investments"
+msgstr "4. الاستثمارات النشطة"
+
+#. module: investment_club
+#: model:ir.ui.menu,name:investment_club.menu_all_investors_report
+msgid "5. All Investors"
+msgstr "5. جميع المستثمرين"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+msgid "<strong>Renewal Due!</strong> Amount:"
+msgstr "<strong>مستحق التجديد!</strong> المبلغ:"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+msgid "<strong>Renewal Overdue!</strong> Amount:"
+msgstr "<strong>تأخر التجديد!</strong> المبلغ:"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__message_needaction
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__message_needaction
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__message_needaction
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__message_needaction
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__message_needaction
+msgid "Action Needed"
+msgstr "إجراء مطلوب"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_project_form
+msgid "Activate"
+msgstr "تفعيل"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_form
+msgid "Activate Investment"
+msgstr "تفعيل الاستثمار"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__active
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__active
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_membership__state__active
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_project__state__active
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_subscription__state__active
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_project_search
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_search
+msgid "Active"
+msgstr "نشط"
+
+#. module: investment_club
+#: model:ir.actions.act_window,name:investment_club.action_active_investments_window
+msgid "Active Investments"
+msgstr "الاستثمارات النشطة"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__active_members_count
+msgid "Active Members"
+msgstr "الأعضاء النشطون"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__activity_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__activity_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__activity_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__activity_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__activity_ids
+msgid "Activities"
+msgstr "الأنشطة"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__activity_exception_decoration
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__activity_exception_decoration
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__activity_exception_decoration
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__activity_exception_decoration
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__activity_state
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__activity_state
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__activity_state
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__activity_state
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__activity_state
+msgid "Activity State"
+msgstr "حالة النشاط"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__activity_type_icon
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__activity_type_icon
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__activity_type_icon
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__activity_type_icon
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__actual_amount
+msgid "Actual Amount"
+msgstr "المبلغ الفعلي"
+
+#. module: investment_club
+#: model:ir.model,name:investment_club.model_investment_actual_return
+msgid "Actual Return Payment"
+msgstr "دفع العائد الفعلي"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__actual_return_ids
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_form
+msgid "Actual Returns History"
+msgstr "سجل العوائد الفعلية"
+
+#. module: investment_club
+#: model:ir.actions.act_window,name:investment_club.action_all_investors_window
+msgid "All Investors"
+msgstr "كل المستثمرين"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__amount
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_actual_return_form
+msgid "Amounts"
+msgstr "المبالغ"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__analytic_account_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__analytic_account_id
+msgid "Analytic Account"
+msgstr "الحساب التحليلي"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+msgid "Annual Subscription (Renewal)"
+msgstr "عضوية سنوية (تجديد)"
+
+#. module: investment_club
+#. odoo-python
+#: code:addons/investment_club/models/membership.py:0
+msgid "Annual Subscription - %s - %s"
+msgstr "اشتراك سنوي - %s - %s"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__annual_subscription_fee
+msgid "Annual Subscription Fee"
+msgstr "رسوم الاشتراك السنوي"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__message_attachment_count
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__message_attachment_count
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__message_attachment_count
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__message_attachment_count
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__auto_renew
+msgid "Auto Renew"
+msgstr "تجديد تلقائي"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_actual_return_form
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_form
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: investment_club
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_actual_return__state__cancelled
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_membership__state__cancelled
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_subscription__state__cancelled
+#: model:ir.model.fields.selection,name:investment_club.selection__membership_renewal__state__cancelled
+msgid "Cancelled"
+msgstr "ملغي"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_project_form
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_form
+msgid "Close"
+msgstr "إغلاق"
+
+#. module: investment_club
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_project__state__closed
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_subscription__state__closed
+msgid "Closed"
+msgstr "مغلق"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__club_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__club_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__club_id
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__club_id
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_project_search
+msgid "Club"
+msgstr "النادي"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__code
+msgid "Club Code"
+msgstr "كود النادي"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__name
+msgid "Club Name"
+msgstr "اسم النادي"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_club_form
+msgid "Club Name (e.g. Elite, Retail)"
+msgstr "اسم النادي (مثلاً: إيليت، ريتيل)"
+
+#. module: investment_club
+#: model:ir.ui.menu,name:investment_club.menu_investment_club
+msgid "Clubs"
+msgstr "النوادي"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__company_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__company_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__company_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__company_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+msgid "Confirm Payment & Activate"
+msgstr "تأكيد الدفع والتفعيل"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+msgid "Create Initial Invoice"
+msgstr "إنشاء الفاتورة الأولية"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+msgid "Create Renewal Invoice"
+msgstr "إنشاء فاتورة التجديد"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_form
+msgid "Create Return Payment"
+msgstr "إنشاء دفعة عوائد"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__create_uid
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__create_uid
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__create_uid
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__create_uid
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__create_uid
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__create_uid
+msgid "Created by"
+msgstr "انشئ بواسطة"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__create_date
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__create_date
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__create_date
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__create_date
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__create_date
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__currency_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__currency_id
+msgid "Currency"
+msgstr "العمله"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__current_invoice_id
+msgid "Current/Renewal Invoice"
+msgstr "فاتورة الفترة الحالية/التجديد"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__partner_id
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__partner_id
+msgid "Customer"
+msgstr "العميل"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+msgid "Customer & Club"
+msgstr "العميل والنادي"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__description
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_project_form
+msgid "Description"
+msgstr "التفاصيل"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__difference
+msgid "Difference"
+msgstr "الفارق"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__display_name
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__display_name
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__display_name
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__display_name
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__display_name
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__display_name
+msgid "Display Name"
+msgstr "الاسم"
+
+#. module: investment_club
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_actual_return__state__draft
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_membership__state__draft
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_project__state__draft
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_subscription__state__draft
+#: model:ir.model.fields.selection,name:investment_club.selection__membership_renewal__state__draft
+#: model_terms:ir.ui.view,arch_db:investment_club.view_actual_return_search
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_project_search
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_search
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: investment_club
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_membership__renewal_status__due
+msgid "Due"
+msgstr "مستحق"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__expected_amount
+msgid "Expected Amount"
+msgstr "المبلغ المتوقع"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__expected_monthly_return
+msgid "Expected Monthly Return"
+msgstr "العائد الشهري المتوقع"
+
+#. module: investment_club
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_membership__state__expired
+msgid "Expired"
+msgstr "منتهية الصلاحية"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__expiry_date
+msgid "Expiry Date"
+msgstr "تاريخ الانتهاء"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_form
+msgid "Financials"
+msgstr "البيانات المالية"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__message_follower_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__message_follower_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__message_follower_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__message_follower_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__message_partner_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__message_partner_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__message_partner_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__message_partner_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون (الشركاء)"
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_actual_return__activity_type_icon
+#: model:ir.model.fields,help:investment_club.field_investment_club__activity_type_icon
+#: model:ir.model.fields,help:investment_club.field_investment_membership__activity_type_icon
+#: model:ir.model.fields,help:investment_club.field_investment_project__activity_type_icon
+#: model:ir.model.fields,help:investment_club.field_investment_subscription__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__date_from
+msgid "From Date"
+msgstr "من تاريخ"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_actual_return_search
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_project_search
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_search
+msgid "Group By"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__has_message
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__has_message
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__has_message
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__has_message
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__id
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__id
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__id
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__id
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__id
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__id
+msgid "ID"
+msgstr "رقم الهوية"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__activity_exception_icon
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__activity_exception_icon
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__activity_exception_icon
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__activity_exception_icon
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_actual_return__activity_exception_icon
+#: model:ir.model.fields,help:investment_club.field_investment_club__activity_exception_icon
+#: model:ir.model.fields,help:investment_club.field_investment_membership__activity_exception_icon
+#: model:ir.model.fields,help:investment_club.field_investment_project__activity_exception_icon
+#: model:ir.model.fields,help:investment_club.field_investment_subscription__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_actual_return__message_needaction
+#: model:ir.model.fields,help:investment_club.field_investment_club__message_needaction
+#: model:ir.model.fields,help:investment_club.field_investment_membership__message_needaction
+#: model:ir.model.fields,help:investment_club.field_investment_project__message_needaction
+#: model:ir.model.fields,help:investment_club.field_investment_subscription__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_actual_return__message_has_error
+#: model:ir.model.fields,help:investment_club.field_investment_actual_return__message_has_sms_error
+#: model:ir.model.fields,help:investment_club.field_investment_club__message_has_error
+#: model:ir.model.fields,help:investment_club.field_investment_club__message_has_sms_error
+#: model:ir.model.fields,help:investment_club.field_investment_membership__message_has_error
+#: model:ir.model.fields,help:investment_club.field_investment_membership__message_has_sms_error
+#: model:ir.model.fields,help:investment_club.field_investment_project__message_has_error
+#: model:ir.model.fields,help:investment_club.field_investment_project__message_has_sms_error
+#: model:ir.model.fields,help:investment_club.field_investment_subscription__message_has_error
+#: model:ir.model.fields,help:investment_club.field_investment_subscription__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "إذا تم تحديده، فهذا يعني وجود خطأ في تسليم بعض الرسائل."
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__initial_invoice_id
+msgid "Initial Invoice"
+msgstr "الفاتورة المبدئية"
+
+#. module: investment_club
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_membership__state__initial_invoiced
+msgid "Initial Invoiced"
+msgstr "تمت الفوترة المبدئية"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+msgid "Initial Membership (First Time)"
+msgstr "عضوية أول مرة"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__initial_membership_fee
+msgid "Initial Membership Fee"
+msgstr "رسوم العضوية لأول مرة"
+
+#. module: investment_club
+#. odoo-python
+#: code:addons/investment_club/models/membership.py:0
+msgid "Initial invoice already exists!"
+msgstr "الفاتورة المبدئية موجودة بالفعل!"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__subscription_id
+#: model:ir.ui.menu,name:investment_club.menu_investment_root
+msgid "Investment"
+msgstr "استثمار"
+
+#. module: investment_club
+#. odoo-python
+#: code:addons/investment_club/models/investment_subscription.py:0
+msgid "Investment %s - %s"
+msgstr "استثمار %s - %s"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__amount
+msgid "Investment Amount"
+msgstr "مبلغ الاستثمار"
+
+#. module: investment_club
+#: model:ir.model,name:investment_club.model_investment_club
+msgid "Investment Club"
+msgstr "نادي الاستثمار"
+
+#. module: investment_club
+#: model:ir.actions.act_window,name:investment_club.action_investment_club
+msgid "Investment Clubs"
+msgstr "نوادي الاستثمار"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__investment_date
+msgid "Investment Date"
+msgstr "تاريخ الاستثمار"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_form
+msgid "Investment Info"
+msgstr "تفاصيل الاستثمار"
+
+#. module: investment_club
+#: model:res.groups,name:investment_club.group_investment_manager
+msgid "Investment Manager"
+msgstr "مدير الاستثمار"
+
+#. module: investment_club
+#: model:ir.model,name:investment_club.model_investment_membership
+msgid "Investment Membership"
+msgstr "عضوية استثمارية"
+
+#. module: investment_club
+#: model:ir.model,name:investment_club.model_investment_project
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__project_id
+msgid "Investment Project"
+msgstr "مشروع الاستثمار"
+
+#. module: investment_club
+#: model:ir.actions.act_window,name:investment_club.action_investment_project
+msgid "Investment Projects"
+msgstr "مشاريع الاستثمار"
+
+#. module: investment_club
+#: model:ir.model,name:investment_club.model_investment_subscription
+msgid "Investment Subscription"
+msgstr "اشتراك استثماري"
+
+#. module: investment_club
+#: model:res.groups,name:investment_club.group_investment_user
+msgid "Investment User"
+msgstr "مستخدم استثمار"
+
+#. module: investment_club
+#. odoo-python
+#: code:addons/investment_club/models/investment_subscription.py:0
+msgid "Investment must be paid first!"
+msgstr "يجب دفع مبلغ الاستثمار أولاً!"
+
+#. module: investment_club
+#: model:ir.actions.act_window,name:investment_club.action_investment_subscription
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__investment_ids
+#: model:ir.ui.menu,name:investment_club.menu_investment_subscription
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+msgid "Investments"
+msgstr "الاستثمارات"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__partner_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__partner_id
+#: model_terms:ir.ui.view,arch_db:investment_club.view_actual_return_search
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_search
+msgid "Investor"
+msgstr "المستثمر"
+
+#. module: investment_club
+#: model:ir.actions.report,name:investment_club.action_investor_summary_pdf
+msgid "Investor Summary PDF"
+msgstr "ملخص المستثمر (PDF)"
+
+#. module: investment_club
+#: model:ir.actions.act_window,name:investment_club.action_investor_summary_window
+#: model:ir.model,name:investment_club.model_report_investment_club_investor_summary
+msgid "Investor Summary Report"
+msgstr "تقرير ملخص المستثمر"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__investors_per_branch
+msgid "Investors per Branch"
+msgstr "المستثمرون حسب الفرع"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__invoice_id
+msgid "Invoice"
+msgstr "الفاتورة"
+
+#. module: investment_club
+#. odoo-python
+#: code:addons/investment_club/models/membership.py:0
+msgid "Invoice is not paid yet!"
+msgstr "الفاتورة لم تُدفع بعد!"
+
+#. module: investment_club
+#: model:ir.model.fields.selection,name:investment_club.selection__membership_renewal__state__invoiced
+msgid "Invoiced"
+msgstr "مفوتر"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+msgid "Invoices & Renewal"
+msgstr "الفواتير والتجديد"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__message_is_follower
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__message_is_follower
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__message_is_follower
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__message_is_follower
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__last_return_date
+msgid "Last Return Date"
+msgstr "تاريخ آخر عائد"
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__write_uid
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__write_uid
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__write_uid
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__write_uid
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__write_uid
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__write_date
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__write_date
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__write_date
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__write_date
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__write_date
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__member_ids
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_club_form
+msgid "Members"
+msgstr "الأعضاء"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__membership_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__membership_id
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__membership_id
+msgid "Membership"
+msgstr "العضوية"
+
+#. module: investment_club
+#. odoo-python
+#: code:addons/investment_club/models/membership.py:0
+msgid "Membership Fee - %s"
+msgstr "رسوم العضوية - %s"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__membership_number
+msgid "Membership Number"
+msgstr "رقم العضوية"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__membership_product_id
+msgid "Membership Product"
+msgstr "منتج العضوية"
+
+#. module: investment_club
+#: model:ir.model,name:investment_club.model_membership_renewal
+msgid "Membership Renewal History"
+msgstr "سجل تجديد العضويات"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_calendar
+msgid "Membership Renewals"
+msgstr "تجديدات العضوية"
+
+#. module: investment_club
+#: model:ir.actions.act_window,name:investment_club.action_investment_membership
+#: model:ir.ui.menu,name:investment_club.menu_investment_membership
+msgid "Memberships"
+msgstr "العضويات"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__message_has_error
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__message_has_error
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__message_has_error
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__message_has_error
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__message_has_error
+msgid "Message Delivery error"
+msgstr "خطأ في تسليم الرسالة"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__message_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__message_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__message_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__message_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_membership__subscription_period__monthly
+#: model:ir.model.fields.selection,name:investment_club.selection__membership_renewal__period__monthly
+msgid "Monthly"
+msgstr "شهرياً"
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__monthly_return
+msgid "Monthly Return"
+msgstr "العائد الشهري"
+
+#. module: investment_club
+#: model:ir.actions.report,name:investment_club.action_monthly_returns_pdf
+msgid "Monthly Returns PDF"
+msgstr "تقرير العوائد الشهرية PDF"
+
+#. module: investment_club
+#: model:ir.actions.act_window,name:investment_club.action_monthly_returns_window
+#: model:ir.model,name:investment_club.model_report_investment_club_monthly_returns
+msgid "Monthly Returns Report"
+msgstr "تقرير العوائد الشهرية"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__my_activity_date_deadline
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__my_activity_date_deadline
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__my_activity_date_deadline
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__my_activity_date_deadline
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "الموعد النهائي لأنشطتي"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__new_expiry_date
+msgid "New Expiry"
+msgstr "تاريخ الانتهاء الجديد"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+msgid "New Investment"
+msgstr "استثمار جديد"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__activity_calendar_event_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__activity_calendar_event_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__activity_calendar_event_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__activity_calendar_event_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__activity_date_deadline
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__activity_date_deadline
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__activity_date_deadline
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__activity_date_deadline
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__activity_summary
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__activity_summary
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__activity_summary
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__activity_summary
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__activity_type_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__activity_type_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__activity_type_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__activity_type_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__next_renewal_amount
+msgid "Next Renewal Amount"
+msgstr "قيمة التجديد القادم"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__next_renewal_date
+msgid "Next Renewal Date"
+msgstr "تاريخ التجديد القادم"
+
+#. module: investment_club
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_membership__renewal_status__not_due
+msgid "Not Due Yet"
+msgstr "لم يحن استحقاقه بعد"
+
+#. module: investment_club
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_subscription__payment_state__not_paid
+msgid "Not Paid"
+msgstr "غير مدفوع"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__notes
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__notes
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__notes
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__notes
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__notes
+#: model_terms:ir.ui.view,arch_db:investment_club.view_actual_return_form
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_club_form
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_form
+msgid "Notes"
+msgstr "ملاحظات"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__message_needaction_counter
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__message_needaction_counter
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__message_needaction_counter
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__message_needaction_counter
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__share_count
+msgid "Number of Shares"
+msgstr "عدد الأسهم"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__message_has_error_counter
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__message_has_error_counter
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__message_has_error_counter
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__message_has_error_counter
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الأخطاء"
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_actual_return__message_needaction_counter
+#: model:ir.model.fields,help:investment_club.field_investment_club__message_needaction_counter
+#: model:ir.model.fields,help:investment_club.field_investment_membership__message_needaction_counter
+#: model:ir.model.fields,help:investment_club.field_investment_project__message_needaction_counter
+#: model:ir.model.fields,help:investment_club.field_investment_subscription__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "عدد الرسائل التي تتطلب إجراءً"
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_actual_return__message_has_error_counter
+#: model:ir.model.fields,help:investment_club.field_investment_club__message_has_error_counter
+#: model:ir.model.fields,help:investment_club.field_investment_membership__message_has_error_counter
+#: model:ir.model.fields,help:investment_club.field_investment_project__message_has_error_counter
+#: model:ir.model.fields,help:investment_club.field_investment_subscription__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل التي بها خطأ في التسليم"
+
+#. module: investment_club
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_membership__renewal_status__overdue
+msgid "Overdue"
+msgstr "متأخر الاستحقاق"
+
+#. module: investment_club
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_actual_return__state__paid
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_membership__renewal_status__paid
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_subscription__payment_state__paid
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_subscription__state__paid
+#: model:ir.model.fields.selection,name:investment_club.selection__membership_renewal__state__paid
+#: model_terms:ir.ui.view,arch_db:investment_club.view_actual_return_search
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_search
+msgid "Paid"
+msgstr "مدفوع"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__payment_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__payment_id
+#: model_terms:ir.ui.view,arch_db:investment_club.view_actual_return_form
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_form
+msgid "Payment"
+msgstr "دفع"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__payment_journal_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__payment_journal_id
+msgid "Payment Journal"
+msgstr "دفتر يومية السداد"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__payment_state
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__payment_state
+msgid "Payment Status"
+msgstr "حالة السداد"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__period_name
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__period
+#: model_terms:ir.ui.view,arch_db:investment_club.view_actual_return_search
+msgid "Period"
+msgstr "الفترة"
+
+#. module: investment_club
+#. odoo-python
+#: code:addons/investment_club/models/membership.py:0
+msgid "Please select membership product!"
+msgstr "يرجى اختيار منتج العضوية!"
+
+#. module: investment_club
+#. odoo-python
+#: code:addons/investment_club/models/actual_return.py:0
+#: code:addons/investment_club/models/investment_subscription.py:0
+msgid "Please select payment journal!"
+msgstr "يرجى اختيار دفتر يومية الدفع!"
+
+#. module: investment_club
+#. odoo-python
+#: code:addons/investment_club/models/membership.py:0
+msgid "Please set annual subscription fee!"
+msgstr "يرجى تحديد رسوم الاشتراك السنوي!"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__old_expiry_date
+msgid "Previous Expiry"
+msgstr "تاريخ الانتهاء السابق"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+msgid "Pricing"
+msgstr "التسعير"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__project_id
+#: model_terms:ir.ui.view,arch_db:investment_club.view_actual_return_search
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_search
+msgid "Project"
+msgstr "المشروع"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__code
+msgid "Project Code"
+msgstr "كود المشروع"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__name
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_project_form
+msgid "Project Name"
+msgstr "اسم المشروع"
+
+#. module: investment_club
+#: model:ir.model,name:investment_club.model_report_investment_club_project_profit
+msgid "Project Profit & Loss Report"
+msgstr "تقرير الأرباح والخسائر للمشروع"
+
+#. module: investment_club
+#: model:ir.actions.report,name:investment_club.action_project_profit_pdf
+msgid "Project Profit and Loss"
+msgstr "أرباح وخسائر المشروع"
+
+#. module: investment_club
+#: model:ir.actions.report,name:investment_club.action_project_summary_report
+msgid "Project Summary"
+msgstr "ملخص المشروع"
+
+#. module: investment_club
+#: model:ir.model,name:investment_club.model_report_investment_club_project_summary
+msgid "Project Summary Report"
+msgstr "تقرير ملخص المشروع"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__project_ids
+#: model:ir.ui.menu,name:investment_club.menu_investment_project
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_club_form
+msgid "Projects"
+msgstr "المشاريع"
+
+#. module: investment_club
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_membership__subscription_period__quarterly
+#: model:ir.model.fields.selection,name:investment_club.selection__membership_renewal__period__quarterly
+msgid "Quarterly"
+msgstr "ربع سنوي"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__rating_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__rating_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__rating_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__rating_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__rating_ids
+msgid "Ratings"
+msgstr "التقييمات"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__name
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__name
+msgid "Reference"
+msgstr "مرجع"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_actual_return_form
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_form
+msgid "Register Payment"
+msgstr "تسجيل دفعة"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__renewal_date
+msgid "Renewal Date"
+msgstr "تاريخ التجديد"
+
+#. module: investment_club
+#: model:ir.actions.report,name:investment_club.action_renewal_due_pdf
+msgid "Renewal Due PDF"
+msgstr "إشعار استحقاق التجديد PDF"
+
+#. module: investment_club
+#: model:ir.actions.act_window,name:investment_club.action_renewal_due_window
+#: model:ir.model,name:investment_club.model_report_investment_club_renewal_due
+msgid "Renewal Due Report"
+msgstr "تقرير التجديدات المستحقة"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__renewal_ids
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+msgid "Renewal History"
+msgstr "سجل التجديدات"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__renewal_status
+msgid "Renewal Status"
+msgstr "حالة التجديد"
+
+#. module: investment_club
+#: model:ir.ui.menu,name:investment_club.menu_reports_root
+msgid "Reports"
+msgstr "التقارير"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__activity_user_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__activity_user_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__activity_user_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__activity_user_id
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__activity_user_id
+msgid "Responsible User"
+msgstr "المسؤول"
+
+#. module: investment_club
+#. odoo-python
+#: code:addons/investment_club/models/actual_return.py:0
+msgid "Return Payment - %s - %s"
+msgstr "رد دفع - %s - %s"
+
+#. module: investment_club
+#: model:ir.actions.act_window,name:investment_club.action_actual_return
+#: model:ir.ui.menu,name:investment_club.menu_actual_return
+msgid "Return Payments"
+msgstr "رد دفع"
+
+#. module: investment_club
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_subscription_form
+msgid "Returns Summary"
+msgstr "ملخص العوائد"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__message_has_sms_error
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__message_has_sms_error
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__message_has_sms_error
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__message_has_sms_error
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "فشل إرسال SMS."
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__share_value
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__share_value
+msgid "Share Value"
+msgstr "قيمة الحصة"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__membership_date
+msgid "Start Date"
+msgstr "تاريخ البدء"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__state
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__state
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__state
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__state
+#: model:ir.model.fields,field_description:investment_club.field_membership_renewal__state
+msgid "Status"
+msgstr "الحاله"
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_actual_return__activity_state
+#: model:ir.model.fields,help:investment_club.field_investment_club__activity_state
+#: model:ir.model.fields,help:investment_club.field_investment_membership__activity_state
+#: model:ir.model.fields,help:investment_club.field_investment_project__activity_state
+#: model:ir.model.fields,help:investment_club.field_investment_subscription__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__subscription_period
+#: model_terms:ir.ui.view,arch_db:investment_club.view_investment_membership_form
+msgid "Subscription Period"
+msgstr "مدة الاشتراك"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__subscription_product_id
+msgid "Subscription Product"
+msgstr "منتج اشتراك"
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_membership__initial_membership_fee
+msgid ""
+"The sale price is managed from the product template. Click on the 'Configure"
+" Variants' button to set the extra attribute prices."
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__date_to
+msgid "To Date"
+msgstr "حتى تاريخ"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__total_actual_returns
+msgid "Total Actual Returns Paid"
+msgstr "إجمالي العوائد الفعلية المدفوعة"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__total_invested
+msgid "Total Invested"
+msgstr "إجمالي الاستثمار"
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_actual_return__activity_exception_decoration
+#: model:ir.model.fields,help:investment_club.field_investment_club__activity_exception_decoration
+#: model:ir.model.fields,help:investment_club.field_investment_membership__activity_exception_decoration
+#: model:ir.model.fields,help:investment_club.field_investment_project__activity_exception_decoration
+#: model:ir.model.fields,help:investment_club.field_investment_subscription__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "نوع نشاط الاستثناء في السجل"
+
+#. module: investment_club
+#: model:ir.model.fields,field_description:investment_club.field_investment_actual_return__website_message_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_club__website_message_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_membership__website_message_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_project__website_message_ids
+#: model:ir.model.fields,field_description:investment_club.field_investment_subscription__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_actual_return__website_message_ids
+#: model:ir.model.fields,help:investment_club.field_investment_club__website_message_ids
+#: model:ir.model.fields,help:investment_club.field_investment_membership__website_message_ids
+#: model:ir.model.fields,help:investment_club.field_investment_project__website_message_ids
+#: model:ir.model.fields,help:investment_club.field_investment_subscription__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields.selection,name:investment_club.selection__investment_membership__subscription_period__yearly
+#: model:ir.model.fields.selection,name:investment_club.selection__membership_renewal__period__yearly
+msgid "Yearly"
+msgstr "سنوي"
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_actual_return__actual_amount
+msgid "المبلغ الفعلي المدفوع للعميل"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_membership__membership_product_id
+msgid "المنتج المستخدم لأول مرة (سعر العضوية الأولى)"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_membership__subscription_product_id
+msgid ""
+"المنتج المستخدم للتجديد السنوي (اختياري - ممكن يكون نفس المنتج أو منتج "
+"مختلف)"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_project__analytic_account_id
+#: model:ir.model.fields,help:investment_club.field_investment_subscription__analytic_account_id
+msgid "حساب تحليلي لتتبع إيرادات ومصروفات المشروع"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_membership__annual_subscription_fee
+#: model:ir.model.fields,help:investment_club.field_investment_membership__next_renewal_amount
+msgid "سعر الاشتراك السنوي (ممكن يكون مختلف عن سعر العضوية الأولى)"
+msgstr ""
+
+#. module: investment_club
+#: model:ir.model.fields,help:investment_club.field_investment_actual_return__period_name
+msgid "مثال: يناير 2026 أو الربع الأول 2026"
+msgstr ""
