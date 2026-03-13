@@ -1,0 +1,638 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_contract_auto
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-12 14:58+0000\n"
+"PO-Revision-Date: 2026-03-12 14:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.contract_custom_print_template
+msgid ""
+"<br/>\n"
+"                        <strong>ومقرها القانوني:</strong>"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.contract_custom_print_template
+msgid ""
+"<br/>\n"
+"                        <strong>ويمثلها قانوناً فى إبرام هذا العقد والتوقيع عليه السيد /</strong>"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.contract_custom_print_template
+msgid ""
+"<br/>\n"
+"                    <strong>رقم قومي / </strong>"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.contract_custom_print_template
+msgid "<span>  (طرف اول منتفع )</span>"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.contract_custom_print_template
+msgid "<span>( طرف تانى - الشريك )</span>"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.view_order_form_inherit_contract_button
+msgid "<span>Contract</span>"
+msgstr "عقد"
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.contract_custom_print_template
+msgid "<strong> المقيم في / </strong>"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.contract_custom_print_template
+msgid "<strong>التوقيعات :</strong>"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.contract_custom_print_template
+msgid "<strong>السيد / </strong>"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.contract_custom_print_template
+msgid ""
+"<strong>تم الاتفاق بين كل من:</strong>\n"
+"                        <br/>"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.contract_custom_print_template
+msgid "<strong>توقيع الطرف الاول :</strong>"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.contract_custom_print_template
+msgid "<strong>توقيع الطرف الثاني :</strong>"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.contract_custom_print_template
+msgid "<strong>رقم العقد :</strong>"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__access_warning
+msgid "Access warning"
+msgstr "تحذير وصول"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__message_needaction
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__first_party_address
+msgid "Address"
+msgstr "العنوان"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__content
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__agreement_terms
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.view_sale_contract_form
+msgid "Agreement Terms"
+msgstr "بنود العقد"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__message_attachment_count
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_res_partner__card_id
+#: model:ir.model.fields,field_description:sale_contract_auto.field_res_users__card_id
+msgid "Card ID"
+msgstr "رقم البطاقة"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__first_party_registry
+msgid "Company Registry"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.view_sale_contract_form
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields.selection,name:sale_contract_auto.selection__sale_contract__state__confirmed
+msgid "Confirmed"
+msgstr "مؤكد"
+
+#. module: sale_contract_auto
+#: model:ir.model,name:sale_contract_auto.model_res_partner
+msgid "Contact"
+msgstr "جهة الاتصال"
+
+#. module: sale_contract_auto
+#: model:ir.actions.report,name:sale_contract_auto.action_print_sale_contract
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_line__contract_id
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_order__contract_id
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.view_sale_contract_form
+msgid "Contract"
+msgstr "عقد"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_order__contract_count
+msgid "Contract Count"
+msgstr "عدد العقود"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__contract_date
+msgid "Contract Date"
+msgstr "تاريخ العقد"
+
+#. module: sale_contract_auto
+#: model:ir.model,name:sale_contract_auto.model_sale_contract_line
+msgid "Contract Line for Sale Agreement"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__contract_line_ids
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.view_sale_contract_form
+msgid "Contract Lines"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__name
+msgid "Contract Reference"
+msgstr "مرجع العقد"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__contract_template_id
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_order__contract_template_id
+msgid "Contract Template"
+msgstr "نموذج العقد"
+
+#. module: sale_contract_auto
+#: model:ir.actions.act_window,name:sale_contract_auto.action_contract_templates
+#: model:ir.ui.menu,name:sale_contract_auto.menu_contract_templates
+msgid "Contract Templates"
+msgstr "نماذج العقود"
+
+#. module: sale_contract_auto
+#: model:ir.model,name:sale_contract_auto.model_contract_template
+msgid "Contract Terms Template"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__contract_title_name
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_title__name
+msgid "Contract Title"
+msgstr "عنوان العقد"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_order__contract_title_name
+msgid "Contract Title Name"
+msgstr "عنوان العقد"
+
+#. module: sale_contract_auto
+#: model:ir.actions.act_window,name:sale_contract_auto.action_contract_title
+#: model:ir.ui.menu,name:sale_contract_auto.menu_contract_titles
+msgid "Contract Titles"
+msgstr "عناوين العقود"
+
+#. module: sale_contract_auto
+#: model:ir.ui.menu,name:sale_contract_auto.menu_contract_root
+#: model:ir.ui.menu,name:sale_contract_auto.menu_contracts
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.view_sale_contract_tree
+msgid "Contracts"
+msgstr "العقود"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__create_uid
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__create_uid
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_line__create_uid
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_title__create_uid
+msgid "Created by"
+msgstr "انشيء بواسطة"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__create_date
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__create_date
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_line__create_date
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_title__create_date
+msgid "Created on"
+msgstr "انشئ في"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__currency_id
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_line__currency_id
+msgid "Currency"
+msgstr "العمله"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__partner_id
+msgid "Customer"
+msgstr "العميل"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,help:sale_contract_auto.field_sale_contract__access_url
+msgid "Customer Portal URL"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model,name:sale_contract_auto.model_sale_contract
+msgid "Customer Sale Contract"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.ui.menu,name:sale_contract_auto.menu_contract_customers
+msgid "Customers"
+msgstr "العملاء"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_line__name
+msgid "Description"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__display_name
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__display_name
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_line__display_name
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_title__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields.selection,name:sale_contract_auto.selection__sale_contract__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.view_sale_contract_form
+msgid "Financial Approve"
+msgstr "اعتماد مالي"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields.selection,name:sale_contract_auto.selection__sale_contract__state__financial_approved
+msgid "Financial Approved"
+msgstr "مُعتمد مالياً"
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.view_sale_contract_form
+msgid "Finish"
+msgstr "انهاء"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields.selection,name:sale_contract_auto.selection__sale_contract__state__finished
+msgid "Finished"
+msgstr "منتهي"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__first_party_id
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__first_party_name
+msgid "First Party"
+msgstr "الطرف الاول"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__first_party_signature
+msgid "First Party Signature"
+msgstr "توقيع الطرف الاول"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__message_follower_ids
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__message_partner_ids
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,help:sale_contract_auto.field_contract_template__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__has_message
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__id
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__id
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_line__id
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_title__id
+msgid "ID"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__second_party_id_card
+msgid "ID Card"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,help:sale_contract_auto.field_contract_template__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,help:sale_contract_auto.field_contract_template__message_needaction
+#: model:ir.model.fields,help:sale_contract_auto.field_sale_contract__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,help:sale_contract_auto.field_contract_template__message_has_error
+#: model:ir.model.fields,help:sale_contract_auto.field_contract_template__message_has_sms_error
+#: model:ir.model.fields,help:sale_contract_auto.field_sale_contract__message_has_error
+#: model:ir.model.fields,help:sale_contract_auto.field_sale_contract__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__message_is_follower
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__write_uid
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__write_uid
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_line__write_uid
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_title__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__write_date
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__write_date
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_line__write_date
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_title__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.view_sale_contract_form
+msgid "Legal Approve"
+msgstr "اعتماد قانوني"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields.selection,name:sale_contract_auto.selection__sale_contract__state__legal_approved
+msgid "Legal Approved"
+msgstr "مُعتمد قانونياً"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__message_has_error
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__message_ids
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__note
+msgid "Note"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__message_needaction_counter
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__message_has_error_counter
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,help:sale_contract_auto.field_contract_template__message_needaction_counter
+#: model:ir.model.fields,help:sale_contract_auto.field_sale_contract__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,help:sale_contract_auto.field_contract_template__message_has_error_counter
+#: model:ir.model.fields,help:sale_contract_auto.field_sale_contract__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.view_sale_contract_form
+msgid "Parties"
+msgstr "اطراف العقد"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__access_url
+msgid "Portal Access URL"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.view_sale_contract_form
+msgid "Print Contract"
+msgstr "طباعة العقد"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_line__product_id
+msgid "Product"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_line__quantity
+msgid "Quantity"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__rating_ids
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.view_sale_contract_form
+msgid "Reset to Draft"
+msgstr "إعادة للتعيين كمسودة"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__message_has_sms_error
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.actions.act_window,name:sale_contract_auto.action_sale_contracts
+msgid "Sale Contracts"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model,name:sale_contract_auto.model_sale_order
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__sale_order_id
+msgid "Sales Order"
+msgstr "أمر البيع"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__second_party_id
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__second_party_name
+msgid "Second Party"
+msgstr "الطرف الثاني"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__second_party_address
+msgid "Second Party Address"
+msgstr "عنوان الطرف الثاني"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__second_party_signature
+msgid "Second Party Signature"
+msgstr "توقيع الطرف الثاني"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__state
+msgid "State"
+msgstr "الحاله"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,help:sale_contract_auto.field_contract_template__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_line__price_subtotal
+msgid "Subtotal"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__subtotal_total
+msgid "Subtotal Total"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__name
+msgid "Template Name"
+msgstr "اسم النموذج"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__amount_total
+msgid "Total Amount"
+msgstr "الاجمالي"
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,help:sale_contract_auto.field_contract_template__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract_line__price_unit
+msgid "Unit Price"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,field_description:sale_contract_auto.field_contract_template__website_message_ids
+#: model:ir.model.fields,field_description:sale_contract_auto.field_sale_contract__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model:ir.model.fields,help:sale_contract_auto.field_contract_template__website_message_ids
+#: model:ir.model.fields,help:sale_contract_auto.field_sale_contract__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.view_sale_contract_form
+msgid "notes"
+msgstr "ملاحظات"
+
+#. module: sale_contract_auto
+#: model:ir.model,name:sale_contract_auto.model_sale_contract_title
+msgid "sale.contract.title"
+msgstr ""
+
+#. module: sale_contract_auto
+#: model_terms:ir.ui.view,arch_db:sale_contract_auto.contract_custom_print_template
+msgid "سجل تجاري رقم ("
+msgstr ""
