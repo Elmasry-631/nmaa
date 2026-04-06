@@ -30,7 +30,9 @@ class InvestmentMembership(models.Model):
         'res.partner',
         string='Customer',
         required=True,
-        tracking=True
+        tracking=True,
+        compute='_compute_customer',
+
     )
     
     club_id = fields.Many2one(
@@ -380,3 +382,14 @@ class InvestmentMembership(models.Model):
             name = f"[{record.customer_membership_number}] {record.partner_id.name}"
             result.append((record.id, name))
         return result
+
+    @api.depends('customer_membership_number')
+    def _compute_customer(self):
+        for rec in self:
+            if rec.customer_membership_number:
+                partner = self.env['res.partner'].search([
+                    ('code', '=', rec.customer_membership_number)
+                ], limit=1)
+                rec.partner_id = partner
+            else:
+                rec.partner_id = False

@@ -21,13 +21,14 @@
         - يستخدم في البحث والتصفية
         - يظهر في التقارير والفواتير
     """,
-    'author': 'Al-Namaa Investment',
+    'author': 'Woledge',
     'website': '',
-    'depends': ['base', 'mail', 'account', 'analytic', 'product'],
+    'depends': ['base', 'mail', 'account', 'analytic', 'product','contacts'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
         'data/sequences.xml',
+        'views/contact_view.xml',
         'views/investment_club_views.xml',
         'views/investment_project_views.xml',
         'views/membership_views.xml',
