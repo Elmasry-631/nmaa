@@ -58,3 +58,12 @@ class MembershipRenewal(models.Model):
     ], string='Status', default='draft')
     
     notes = fields.Text(string='Notes')
+
+    # ✅ إصلاح: إضافة company_id عشان نقدر نطبق multi-company rule
+    company_id = fields.Many2one(
+        'res.company',
+        related='membership_id.company_id',
+        string='Company',
+        store=True,
+        readonly=True
+    )

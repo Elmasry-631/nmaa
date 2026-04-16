@@ -14,7 +14,7 @@
             <field name="users" eval="[(4, ref('base.user_admin'))]"/>
         </record>
 
-        <!-- قواعد الوصول متعدد الشركات -->
+        <!-- ✅ قواعد الوصول متعدد الشركات — كاملة لجميع النماذج -->
         <record id="rule_investment_club_multi_company" model="ir.rule">
             <field name="name">Club Multi-Company</field>
             <field name="model_id" ref="model_investment_club"/>
@@ -30,6 +30,27 @@
         <record id="rule_investment_membership_multi_company" model="ir.rule">
             <field name="name">Membership Multi-Company</field>
             <field name="model_id" ref="model_investment_membership"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <!-- ✅ إصلاح: rules ناقصة كانت — investment.subscription -->
+        <record id="rule_investment_subscription_multi_company" model="ir.rule">
+            <field name="name">Subscription Multi-Company</field>
+            <field name="model_id" ref="model_investment_subscription"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <!-- ✅ إصلاح: rules ناقصة كانت — investment.actual.return -->
+        <record id="rule_investment_actual_return_multi_company" model="ir.rule">
+            <field name="name">Actual Return Multi-Company</field>
+            <field name="model_id" ref="model_investment_actual_return"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <!-- ✅ إصلاح: rules ناقصة كانت — membership.renewal -->
+        <record id="rule_membership_renewal_multi_company" model="ir.rule">
+            <field name="name">Membership Renewal Multi-Company</field>
+            <field name="model_id" ref="model_membership_renewal"/>
             <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
         </record>
     </data>

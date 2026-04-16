@@ -1,5 +1,6 @@
 # investment_club/models/investment_project.py
 from odoo import models, fields, api
+from dateutil.relativedelta import relativedelta  # ⚠️ مهم للشهور
 
 
 class InvestmentProject(models.Model):
@@ -17,19 +18,61 @@ class InvestmentProject(models.Model):
         ondelete='cascade'
     )
     
-    # Analytic Account للمشروع
     analytic_account_id = fields.Many2one(
         'account.analytic.account',
         string='Analytic Account',
-        required=True,
-        help='حساب تحليلي لتتبع إيرادات ومصروفات المشروع'
+        required=True
     )
     
-    # بيانات مالية - فاضية في البداية
     share_value = fields.Float(string='Share Value', required=True)
-    monthly_return = fields.Float(string='Monthly Return', required=True)
     
-    investors_per_branch = fields.Integer(string='Investors per Branch', default=8)
+    # ===== إعدادات العوائد =====
+    return_calculation_type = fields.Selection([
+        ('fixed_monthly', 'Fixed Monthly'),      
+        ('fixed_quarterly', 'Fixed Quarterly'),  
+        ('fixed_yearly', 'Fixed Yearly'),        
+        ('custom', 'Custom Schedule'),           
+        ('capital_plus_return', 'Capital + Return'),  
+        ('grace_period', 'Grace Period + Monthly'),  # 3 شهور سكون + شهري
+    ], string='Return Calculation Type', default='fixed_monthly', required=True)
+    
+    # ⚠️ التغيير: فترة السكون بالشهور مش بالأيام
+    grace_period_months = fields.Integer(
+        string='Grace Period (Months)',
+        help='عدد الشهور قبل بدء العوائد (مثلاً 3 شهور)',
+        default=3
+    )
+    
+    # ⚠️ نحتفظ بالأيام للحالات الخاصة
+    grace_period_days = fields.Integer(
+        string='Grace Period (Days)',
+        help='فترة الانتظار قبل بدء العوائد (للتوافق مع القديم)',
+        default=0
+    )
+    
+    return_period_days = fields.Integer(
+        string='Return Period (Days)',
+        help='عدد الأيام بين كل دفع عائد (للجدول المخصص فقط)',
+        default=30
+    )
+    
+    return_percentage = fields.Float(
+        string='Return Percentage (%)',
+        help='نسبة العائد السنوية على الاستثمار',
+        default=0.0
+    )
+    
+    capital_return_period = fields.Integer(
+        string='Capital Return Period (Months)',
+        help='بعد كم شهر يرجع رأس المال كامل',
+        default=0
+    )
+    
+    fixed_return_amount = fields.Float(
+        string='Fixed Return Amount per Period',
+        help='المبلغ الثابت اللي العميل ياخده كل فترة',
+        default=0.0
+    )
     
     state = fields.Selection([
         ('draft', 'Draft'),

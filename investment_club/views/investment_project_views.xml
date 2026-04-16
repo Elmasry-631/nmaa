@@ -10,7 +10,7 @@
                 <field name="club_id"/>
                 <field name="analytic_account_id"/>
                 <field name="share_value"/>
-                <field name="monthly_return"/>
+                <field name="return_calculation_type"/>
                 <field name="state"/>
             </list>
         </field>
@@ -35,6 +35,7 @@
                             <field name="name" placeholder="Project Name"/>
                         </h2>
                     </div>
+                    
                     <group>
                         <group>
                             <field name="club_id"/>
@@ -42,10 +43,24 @@
                         </group>
                         <group>
                             <field name="share_value"/>
-                            <field name="monthly_return"/>
-                            <field name="investors_per_branch"/>
                         </group>
                     </group>
+                    
+                    <!-- إعدادات العوائد -->
+                    <group string="Return Configuration">
+                        <group>
+                            <field name="return_calculation_type"/>
+                            <!-- ⚠️ أضفنا grace_period_months -->
+                            <field name="grace_period_months" invisible="return_calculation_type not in ('grace_period', 'capital_plus_return')"/>
+                            <field name="return_period_days" invisible="return_calculation_type != 'custom'"/>
+                            <field name="return_percentage"/>
+                        </group>
+                        <group>
+                            <field name="capital_return_period"/>
+                            <field name="fixed_return_amount"/>
+                        </group>
+                    </group>
+                    
                     <notebook>
                         <page string="Description">
                             <field name="description"/>

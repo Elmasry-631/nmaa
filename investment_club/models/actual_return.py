@@ -1,6 +1,8 @@
 # investment_club/models/actual_return.py
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
+from datetime import timedelta
+from dateutil.relativedelta import relativedelta
 
 
 class InvestmentActualReturn(models.Model):
@@ -9,7 +11,6 @@ class InvestmentActualReturn(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'date_from desc'
 
-    # ===== رقم العضوية للعميل (من Subscription) =====
     customer_membership_number = fields.Char(
         string='Customer Membership Number',
         related='subscription_id.customer_membership_number',
@@ -56,27 +57,27 @@ class InvestmentActualReturn(models.Model):
         readonly=True
     )
     
-    # الفترة
     period_name = fields.Char(
         string='Period',
-        required=True,
-        help='مثال: يناير 2026 أو الربع الأول 2026'
+        compute='_compute_period_name',
+        store=True
     )
     
     date_from = fields.Date(string='From Date', required=True)
     date_to = fields.Date(string='To Date', required=True)
     
-    # المبالغ
     expected_amount = fields.Float(
         string='Expected Amount',
-        related='subscription_id.expected_monthly_return',
+        compute='_compute_expected_amount',
+        store=True,
         readonly=True
     )
     
     actual_amount = fields.Float(
         string='Actual Amount',
         required=True,
-        help='المبلغ الفعلي المدفوع للعميل'
+        help='المبلغ الفعلي المدفوع للعميل',
+        default=0.0
     )
     
     difference = fields.Float(
@@ -85,7 +86,6 @@ class InvestmentActualReturn(models.Model):
         store=True
     )
     
-    # الدفع
     payment_journal_id = fields.Many2one(
         'account.journal',
         string='Payment Journal',
@@ -113,10 +113,94 @@ class InvestmentActualReturn(models.Model):
         store=True
     )
 
+    @api.depends('date_from', 'date_to', 'customer_membership_number')
+    def _compute_period_name(self):
+        for rec in self:
+            if rec.date_from and rec.date_to:
+                rec.period_name = '%s - %s' % (
+                    rec.date_from.strftime('%B %Y'),
+                    rec.customer_membership_number or 'Unknown'
+                )
+            else:
+                rec.period_name = False
+
+    @api.depends('subscription_id', 'date_from', 'date_to')
+    def _compute_expected_amount(self):
+        for rec in self:
+            if not rec.subscription_id:
+                rec.expected_amount = 0.0
+                continue
+            
+            sub = rec.subscription_id
+            
+            if sub.fixed_return_amount > 0:
+                rec.expected_amount = sub.fixed_return_amount
+            else:
+                rec.expected_amount = sub.expected_period_return or 0.0
+
     @api.depends('expected_amount', 'actual_amount')
     def _compute_difference(self):
         for rec in self:
             rec.difference = rec.actual_amount - rec.expected_amount
+
+    @api.onchange('subscription_id')
+    def _onchange_subscription(self):
+        if not self.subscription_id:
+            return
+        
+        sub = self.subscription_id
+        today = fields.Date.today()
+        
+        # ===== التحقق من فترة السكون =====
+        if not sub.grace_period_passed:
+            # حساب الوقت المتبقي بالشهور والأيام
+            diff = relativedelta(sub.returns_start_date, today)
+            months_remaining = diff.months + (diff.years * 12)
+            days_remaining = (sub.returns_start_date - today).days  # إجمالي الأيام
+            
+            # ⚠️ التصحيح: عرض الشهور والأيام الإجمالية بين قوسين
+            raise UserError(_(
+                '⛔ لا يمكن إنشاء دفع عائد الآن!\n\n'
+                'فترة السكون: %s شهور\n'
+                'تاريخ الاستثمار: %s\n'
+                'تاريخ بدء العوائد: %s\n\n'
+                'الوقت المتبقي: %s شهر (%s يوم)\n\n'
+                'يمكنك إنشاء دفع العائد بعد: %s'
+            ) % (
+                sub.grace_period_months or 0,
+                sub.investment_date,
+                sub.returns_start_date,
+                months_remaining,
+                days_remaining,  # ⚠️ إجمالي الأيام مش الأيام الزيادة
+                sub.returns_start_date.strftime('%Y-%m-%d') if sub.returns_start_date else 'N/A'
+            ))
+        
+        # ===== حساب تاريخ العائد القادم =====
+        if sub.actual_return_ids:
+            last_return = sub.actual_return_ids.sorted('date_to', reverse=True)[0]
+            next_date_from = last_return.date_to + timedelta(days=1)
+        else:
+            next_date_from = sub.returns_start_date
+        
+        if not next_date_from:
+            raise UserError(_('خطأ: تاريخ بدء العوائد غير محدد!'))
+        
+        if next_date_from > today:
+            raise UserError(_(
+                '⏳ تاريخ العائد القادم (%s) في المستقبل!'
+            ) % next_date_from.strftime('%Y-%m-%d'))
+        
+        # ===== تعبئة التواريخ تلقائياً =====
+        self.date_from = next_date_from
+        self.date_to = next_date_from + relativedelta(months=1, days=-1)
+        
+        # ===== تعبئة المبلغ المتوقع =====
+        if sub.fixed_return_amount > 0:
+            self.expected_amount = sub.fixed_return_amount
+            self.actual_amount = sub.fixed_return_amount
+        else:
+            self.expected_amount = sub.expected_period_return or 0.0
+            self.actual_amount = sub.expected_period_return or 0.0
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -126,11 +210,13 @@ class InvestmentActualReturn(models.Model):
         return super(InvestmentActualReturn, self).create(vals_list)
 
     def action_register_payment(self):
-        """تسجيل دفع العائد للعميل"""
         self.ensure_one()
         
         if not self.payment_journal_id:
             raise UserError(_('Please select payment journal!'))
+        
+        if self.actual_amount <= 0:
+            raise UserError(_('Actual amount must be greater than zero!'))
         
         payment_vals = {
             'payment_type': 'outbound',
@@ -151,7 +237,6 @@ class InvestmentActualReturn(models.Model):
         })
 
     def action_cancel(self):
-        """إلغاء العائد"""
         if self.payment_id and self.payment_id.state == 'posted':
             self.payment_id.action_cancel()
         self.write({'state': 'cancelled'})
@@ -159,6 +244,6 @@ class InvestmentActualReturn(models.Model):
     def name_get(self):
         result = []
         for record in self:
-            name = f"[{record.customer_membership_number}] {record.period_name} - {record.actual_amount}"
+            name = f"[{record.customer_membership_number}] {record.period_name} - {record.actual_amount:,.2f}"
             result.append((record.id, name))
         return result

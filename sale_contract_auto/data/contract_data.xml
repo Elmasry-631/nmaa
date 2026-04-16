@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        <!-- Amendment Sequence -->
+        <record id="seq_contract_amendment" model="ir.sequence">
+            <field name="name">Contract Amendment</field>
+            
+            <field name="code">contract.amendment</field>
+            <field name="prefix">AMD/</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+        <!-- Scheduled Action: Check Contract Expiry -->
+        <record id="ir_cron_check_contract_expiry" model="ir.cron">
+            <field name="name">Check Contract Expiry</field>
+            <field name="model_id" ref="model_sale_contract"/>
+            <field name="state">code</field>
+            <field name="code">model._check_contract_expiry()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">True</field>
+        </record>
+
+        <!-- Default Email Template for State Notifications -->
+        <record id="email_template_contract_state_change" model="mail.template">
+            <field name="name">Contract State Change Notification</field>
+            <field name="model_id" ref="sale_contract_auto.model_sale_contract"/>
+            <field name="subject">Contract {{ object.name }} - Status Updated</field>
+            <field name="email_from">{{ (object.create_uid.email_formatted or user.email_formatted) }}</field>
+            <field name="email_to">{{ object.partner_id.email }}</field>
+            <field name="body_html" type="html">
+<div style="margin: 0; padding: 0; font-size: 14px;">
+    <p>Dear {{ object.partner_id.name }},</p>
+    <p>The status of your contract <strong>{{ object.name }}</strong> has been updated.</p>
+    <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+        <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Contract</strong></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">{{ object.name }}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Customer</strong></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">{{ object.partner_id.name }}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Amount</strong></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">{{ object.amount_total }} {{ object.currency_id.name }}</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Status</strong></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">{{ object.state }}</td>
+        </tr>
+    </table>
+    <p>You can view your contract details through the portal:</p>
+    <p style="text-align: center;">
+        <a t-att-href="object.get_portal_url()"
+           style="background-color: #1C5B8B; color: #fff; padding: 10px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+            View Contract
+        </a>
+    </p>
+    <p>Best regards,<br/>{{ object.company_id.name }}</p>
+</div>
+            </field>
+        </record>
+
+        <!-- Demo Clauses -->
+        <record id="clause_payment_terms" model="contract.clause">
+            <field name="name">Payment Terms</field>
+            <field name="clause_type">payment</field>
+            <field name="content">
+<![CDATA[
+<h3>Payment Terms</h3>
+<p>The total contract amount of <strong>{{formatted_amount}}</strong> shall be paid according to the agreed payment schedule. All payments shall be made via bank transfer to the following account:</p>
+<ul>
+    <li>Bank: {{company_name}}</li>
+    <li>Account details as specified in the invoice</li>
+</ul>
+<p>Late payments shall incur a penalty of 1.5% per month of the outstanding amount.</p>
+]]>
+            </field>
+        </record>
+
+        <record id="clause_warranty" model="contract.clause">
+            <field name="name">Warranty</field>
+            <field name="clause_type">warranty</field>
+            <field name="content">
+<![CDATA[
+<h3>Warranty</h3>
+<p>The first party guarantees that all products and services provided under this contract are free from defects in materials and workmanship for a period of 12 months from the date of delivery, unless otherwise specified in the contract terms.</p>
+]]>
+            </field>
+        </record>
+
+        <record id="clause_termination" model="contract.clause">
+            <field name="name">Termination</field>
+            <field name="clause_type">termination</field>
+            <field name="content">
+<![CDATA[
+<h3>Termination</h3>
+<p>Either party may terminate this contract by providing a written notice of at least 30 days to the other party. In the event of termination:</p>
+<ul>
+    <li>The second party shall pay for all work completed up to the termination date.</li>
+    <li>Any advance payments shall be adjusted against the final invoice.</li>
+    <li>Neither party shall be liable for losses arising from the termination.</li>
+</ul>
+]]>
+            </field>
+        </record>
+
+        <record id="clause_confidentiality" model="contract.clause">
+            <field name="name">Confidentiality</field>
+            <field name="clause_type">confidentiality</field>
+            <field name="content">
+<![CDATA[
+<h3>Confidentiality</h3>
+<p>Both parties agree to keep confidential all information exchanged during the execution of this contract. This includes but is not limited to business strategies, financial data, and technical specifications. This obligation shall remain in effect for 2 years after the termination of this contract.</p>
+]]>
+            </field>
+        </record>
+
+        <record id="clause_dispute" model="contract.clause">
+            <field name="name">Dispute Resolution</field>
+            <field name="clause_type">dispute</field>
+            <field name="content">
+<![CDATA[
+<h3>Dispute Resolution</h3>
+<p>Any dispute arising from this contract shall be resolved through friendly negotiation first. If no agreement is reached within 15 days, the dispute shall be referred to the competent courts of the jurisdiction where the first party is headquartered.</p>
+]]>
+            </field>
+        </record>
+
+        <record id="clause_penalty" model="contract.clause">
+            <field name="name">Late Payment Penalty</field>
+            <field name="clause_type">penalty</field>
+            <field name="content">
+<![CDATA[
+<h3>Late Payment Penalty</h3>
+<p>In case of delayed payment beyond the due date specified in the payment schedule, the second party shall pay a late fee of 1.5% of the outstanding amount per month, calculated from the due date until full payment is received.</p>
+]]>
+            </field>
+        </record>
+
+        <record id="clause_liability" model="contract.clause">
+            <field name="name">Liability</field>
+            <field name="clause_type">liability</field>
+            <field name="content">
+<![CDATA[
+<h3>Liability</h3>
+<p>The total liability of the first party under this contract shall not exceed the total contract amount of <strong>{{formatted_amount}}</strong>. The first party shall not be liable for any indirect, incidental, or consequential damages.</p>
+]]>
+            </field>
+        </record>
+
+        <!-- Auto-create invoices for due installments -->
+        <record id="ir_cron_auto_invoice_installments" model="ir.cron">
+            <field name="name">Auto-Create Invoices for Due Installments</field>
+            <field name="model_id" ref="model_contract_payment_schedule"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_auto_create_invoices()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">False</field>
+        </record>
+
+</odoo>

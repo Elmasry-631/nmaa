@@ -26,13 +26,14 @@ class InvestmentMembership(models.Model):
         default='New'
     )
     
+    # ⚠️ التصحيح: شلت required=True و compute مع بعض
     partner_id = fields.Many2one(
         'res.partner',
         string='Customer',
-        required=True,
         tracking=True,
         compute='_compute_customer',
-
+        store=True,  # أضفت store=True عشان يتخزن
+        readonly=False,  # يسمح بالتعديل اليدوي
     )
     
     club_id = fields.Many2one(
@@ -383,6 +384,7 @@ class InvestmentMembership(models.Model):
             result.append((record.id, name))
         return result
 
+    # ⚠️ التصحيح: أضفت store=True عشان يتخزن في الداتابيز
     @api.depends('customer_membership_number')
     def _compute_customer(self):
         for rec in self:

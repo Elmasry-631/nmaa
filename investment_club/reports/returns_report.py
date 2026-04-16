@@ -8,20 +8,18 @@ class MonthlyReturnsReport(models.AbstractModel):
 
     @api.model
     def _get_report_values(self, docids, data=None):
-        # كل الاستثمارات النشطة
         investments = self.env['investment.subscription'].search([
             ('state', '=', 'active'),
             ('payment_state', '=', 'paid')
         ])
-        
-        # تجميع حسب المشروع
+
         by_project = {}
         by_club = {}
         total = 0
-        
+
         for inv in investments:
-            # حسب المشروع
             proj_name = inv.project_id.name
+
             if proj_name not in by_project:
                 by_project[proj_name] = {
                     'investors': 0,
@@ -32,16 +30,19 @@ class MonthlyReturnsReport(models.AbstractModel):
             by_project[proj_name]['investors'] += 1
             by_project[proj_name]['shares'] += inv.share_count
             by_project[proj_name]['invested'] += inv.amount
-            by_project[proj_name]['monthly_return'] += inv.expected_monthly_return
-            
-            # حسب النادي
+
+            # ✅ إصلاح: expected_period_return بدل expected_monthly_return (غير موجود)
+            by_project[proj_name]['monthly_return'] += inv.expected_period_return
+
             club_name = inv.club_id.name
             if club_name not in by_club:
                 by_club[club_name] = 0
-            by_club[club_name] += inv.expected_monthly_return
-            
-            total += inv.expected_monthly_return
-        
+
+            # ✅ إصلاح نفس الفيلد هنا
+            by_club[club_name] += inv.expected_period_return
+
+            total += inv.expected_period_return
+
         return {
             'date': fields.Date.today(),
             'month': fields.Date.today().strftime('%B %Y'),

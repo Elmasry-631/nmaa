@@ -6,3 +6,5 @@ from . import membership_renewal
 from . import investment_subscription
 from . import actual_return
 from . import contact
+from . import crm_lead
+from . import res_config_settings
