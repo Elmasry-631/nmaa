@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <data noupdate="1">
+  <data>
 
     <record id="seq_sale_contract" model="ir.sequence">
       <field name="name">Sale Contract</field>
+
       <field name="code">sale.contract</field>
       <field name="prefix">CONTRACT/</field>
       <field name="padding">6</field>

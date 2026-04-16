@@ -21,8 +21,12 @@ class InvestorSummaryReport(models.AbstractModel):
             # استثمارات العضو
             investments = mem.investment_ids.filtered(lambda i: i.state == 'active')
             
+            # ✅ إصلاح: expected_period_return هو الفيلد الصحيح الموجود في الموديل
+            period_return = sum(inv.expected_period_return for inv in investments)
+
             report_data.append({
                 'membership': mem.membership_number,
+                'customer_membership_number': mem.customer_membership_number,
                 'partner': mem.partner_id.name,
                 'phone': mem.partner_id.phone or '',
                 'club': mem.club_id.name,
@@ -30,7 +34,7 @@ class InvestorSummaryReport(models.AbstractModel):
                 'membership_fee': mem.annual_subscription_fee,
                 'investment_count': len(investments),
                 'total_invested': sum(inv.amount for inv in investments),
-                'monthly_return': sum(inv.expected_monthly_return for inv in investments),
+                'monthly_return': period_return,
             })
             
             total_membership += mem.annual_subscription_fee

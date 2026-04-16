@@ -1,19 +1,30 @@
 {
     'name': "Sale Contract Auto",
-    'version': '1.0',
+    'version': '2.0',
     'category': 'Sales',
-    'summary': "Automatically generate contracts from sale orders",
+    'summary': "Advanced contract management with approval workflow, expiry tracking, payment schedules, and more",
     'description': """
-Sale Contract Auto
-==================
+    
+Sale Contract Auto v2.0
+========================
 
-This module allows you to:
-
-• Create customer contracts
-• Link contracts with sale orders
-• Generate contract reports (PDF)
-• Send contract link to customers via email
-• Allow customers to access contracts from portal
+Features:
+---------
+• Create customer contracts linked with sale orders
+• Multi-level approval workflow (Draft → Confirmed → Financial → Legal → Finished)
+• Contract expiry dates with auto-renewal and scheduled notifications
+• Dynamic template placeholders ({{partner_name}}, {{amount}}, etc.)
+• Clause library for reusable contract terms
+• Invoice generation from contracts and payment installments
+• Payment schedules with installment tracking
+• Contract amendments with version control
+• Document management (required/optional uploads)
+• QR code verification on printed contracts
+• Company stamp on reports
+• Customer portal for viewing and signing contracts
+• Kanban dashboard with expiry warnings
+• Automated email notifications on state changes
+• Arabic RTL support with formatted dates
 """,
 
     'author': "Ibrahim Elmasry",
@@ -26,7 +37,6 @@ This module allows you to:
         'account',
         'portal',
         'mail',
-        'website',
     ],
 
     'data': [
@@ -35,14 +45,16 @@ This module allows you to:
 
         # Data
         'data/mail_templates.xml',
-
+        'data/contract_data.xml',
+        #
         # Sequences
         'views/ir_sequence.xml',
 
         # Views
         'views/res_partner_view.xml',
-        # 'views/sale_contract_form.xml',
         'views/views.xml',
+        'views/templates.xml',
+        'views/dashboard_template.xml',
 
         # Reports
         'report/contract_report.xml',

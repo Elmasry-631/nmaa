@@ -1,4 +1,6 @@
-<!-- investment_club/views/dashboard_views.xml -->
+
+<odoo>
+    <!-- investment_club/views/dashboard_views.xml -->
 <record id="investment_dashboard" model="ir.ui.view">
     <field name="name">Investment Dashboard</field>
     <field name="model">board.board</field>
@@ -18,3 +20,4 @@
         </form>
     </field>
 </record>
+</odoo>

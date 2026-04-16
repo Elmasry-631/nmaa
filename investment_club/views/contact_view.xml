@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="added_card_id" model="ir.ui.view">
-        <field name="name">Card Id</field>
+    <record id="view_partner_form_inherit_code" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.code</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
-
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='vat']" position="after">
-                <field name="card_id"/>
-            </xpath>
-        </field>
 
+            <!-- نحط الحقل بعد الاسم -->
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="code"/>
+            </xpath>
+
+        </field>
     </record>
 </odoo>

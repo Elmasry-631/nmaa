@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="crm_lead_view_form_inherit_investment" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.investment</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//header" position="inside">
+                <button name="action_create_membership" 
+                        type="object" 
+                        string="Create Membership" 
+                        class="btn-primary"
+                        icon="fa-user-plus"
+                        invisible="not partner_id or not interested_project_id"/>
+            </xpath>
+
+            <!-- نضيف الفيلدز بعد العنوان مباشرة -->
+            <xpath expr="//div[hasclass('oe_title')]" position="after">
+                <div class="o_group">
+                    <span class="o_form_label">Interested Project:</span>
+                    <field name="interested_project_id" 
+                           options="{'no_create': True, 'no_edit': True}"
+                           placeholder="اختر المشروع..."/>
+                    <span class="o_form_label">Club:</span>
+                    <field name="club_id" readonly="1"/>
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

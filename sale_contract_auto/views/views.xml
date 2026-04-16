@@ -1,112 +1,176 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-<data>
 
     <!-- ================================================= -->
-    <!--                     CONTRACT                      -->
+    <!--  1. SEARCH VIEW (تم وضعه أولاً لتجنب خطأ عدم الوجود) -->
     <!-- ================================================= -->
 
-    <!-- Tree View -->
+<!--    <record id="view_sale_contract_search" model="ir.ui.view">-->
+<!--        <field name="name">sale.contract.search</field>-->
+<!--        <field name="model">sale.contract</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--&lt;!&ndash;            <search string="Search Contracts">&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="name"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="partner_id"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="state"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <separator/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <filter name="filter_draft" string="Draft" domain="[('state','=','draft')]"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <filter name="filter_confirmed" string="Confirmed" domain="[('state','=','confirmed')]"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <filter name="filter_finished" string="Finished" domain="[('state','=','finished')]"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <filter name="filter_expired" string="Expired" domain="[('is_expired','=',True)]"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <filter name="filter_expiring" string="Expiring Soon" domain="[('can_be_renewed','=',True),('is_expired','=',False)]"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <filter name="filter_auto_renew" string="Auto Renew" domain="[('auto_renew','=',True)]"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <separator/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <filter name="filter_my_contracts" string="My Contracts" domain="[('create_uid','=',uid)]"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <group expand="0" string="Group By">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <filter name="group_partner" string="Customer" context="{'group_by':'partner_id'}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <filter name="group_state" string="State" context="{'group_by':'state'}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <filter name="group_date" string="Contract Date" context="{'group_by':'contract_date'}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                </group>&ndash;&gt;-->
+<!--&lt;!&ndash;            </search>&ndash;&gt;-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <!-- ================================================= -->
+    <!--          CONTRACT TREE VIEW                        -->
+    <!-- ================================================= -->
     <record id="view_sale_contract_tree" model="ir.ui.view">
         <field name="name">sale.contract.tree</field>
         <field name="model">sale.contract</field>
         <field name="arch" type="xml">
-            <list string="Contracts">
+            <list string="Contracts" decoration-danger="is_expired == True">
                 <field name="name"/>
                 <field name="partner_id"/>
-                <field name="sale_order_id"/>
                 <field name="contract_date"/>
-                <field name="amount_total"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="days_remaining"/>
+                <field name="amount_total" sum="Total"/>
                 <field name="state" widget="badge"
-                   decoration-primary="state == 'draft'"
-                   decoration-success="state == 'active'"
-                   decoration-warning="state == 'finished'"
-                   decoration-danger="state == 'cancelled'"/>
+                       decoration-primary="state == 'draft'"
+                       decoration-info="state == 'confirmed'"
+                       decoration-warning="state in ('financial_approved','legal_approved')"
+                       decoration-success="state == 'finished'"
+                       decoration-danger="state == 'cancelled'"
+                       decoration-muted="is_expired == True"/>
+                <field name="is_expired" invisible="1"/>
             </list>
         </field>
     </record>
 
-    <!-- Form View -->
+    <!-- ================================================= -->
+    <!--          CONTRACT KANBAN VIEW (تعديل لأودو 18)     -->
+    <!-- ================================================= -->
+    <record id="view_sale_contract_kanban" model="ir.ui.view">
+        <field name="name">sale.contract.kanban</field>
+        <field name="model">sale.contract</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="amount_total"/>
+                <field name="currency_id"/>
+                <field name="days_remaining"/>
+                <field name="end_date"/>
+                <field name="state"/>
+                <field name="is_expired"/>
+                <templates>
+                    <!-- تم تغيير kanban-box إلى card لتوافق أودو 18 -->
+                    <t t-name="card">
+                        <div class="oe_kanban_card">
+                            <div class="oe_kanban_content">
+                                <strong><field name="name"/></strong>
+                                <div t-attf-class="oe_kanban_card_bottom">
+                                    <span><field name="partner_id"/></span>
+                                </div>
+                                <div class="text-muted">
+                                    <t t-esc="record.amount_total.value"/>
+                                    <span> <t t-esc="record.currency_id.value"/></span>
+                                </div>
+                                <div t-if="record.days_remaining.value &lt;= 30 and record.days_remaining.value &gt;= 0" class="text-warning">
+                                    <i class="fa fa-clock-o"/> <t t-esc="record.days_remaining.value"/> days left
+                                </div>
+                                <div t-if="record.is_expired.value == true" class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"/> Expired
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ================================================= -->
+    <!--          CONTRACT FORM VIEW                        -->
+    <!-- ================================================= -->
     <record id="view_sale_contract_form" model="ir.ui.view">
         <field name="name">sale.contract.form</field>
         <field name="model">sale.contract</field>
         <field name="arch" type="xml">
             <form string="Contract">
-
                 <header>
-
-                    <field name="state"
-                           widget="statusbar"
-                           statusbar_visible="draft,active,finished"
-                           statusbar_colors="{'draft':'blue','active':'green','finished':'orange','cancelled':'red'}"/>
-
-                    <button name="action_set_active"
-                            string="Confirm"
-                            type="object"
-                            class="btn-primary"
-                            invisible="state != 'draft'"/>
-
-                    <button name="action_financial_approve"
-                            string="Financial Approve"
-                            type="object"
-                            class="btn-secondary"
-                            invisible="state != 'confirmed'"/>
-
-                    <button name="action_legal_approve"
-                            string="Legal Approve"
-                            type="object"
-                            class="btn-secondary"
-                            invisible="state != 'financial_approved'"/>
-
-
-
-
-                    <button name="action_finish"
-                            string="Finish"
-                            type="object"
-                            class="btn-danger"
-                            invisible="state == 'finished'"/>
-
-
-                    <button name="action_reset_to_draft"
-                        string="Reset to Draft"
-                        type="object"
-                        class="btn-danger"
-                        invisible="state not in 'confirmed,financial_approved,legal_approved,finished'" />
-                        <button name="print_contract_report"
-                                type="object"
-                                string="Print Contract"
-                                class="btn-primary"/>
-
-
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,financial_approved,legal_approved,finished"/>
+                    <button name="action_set_active" string="Confirm" type="object" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_financial_approve" string="Financial Approve" type="object" class="btn-secondary" invisible="state != 'confirmed'"/>
+                    <button name="action_legal_approve" string="Legal Approve" type="object" class="btn-secondary" invisible="state != 'financial_approved'"/>
+                    <button name="action_finish" string="Finish" type="object" class="btn-success" invisible="state != 'legal_approved'"/>
+                    <button name="action_cancel" string="Cancel" type="object" class="btn-danger" invisible="state in ('draft','cancelled')"/>
+                    <button name="action_reset_to_draft" string="Reset to Draft" type="object" class="btn-secondary" invisible="state not in ('confirmed','financial_approved','legal_approved','finished')"/>
+                    <button name="print_contract_report" type="object" string="Print Contract" class="btn-primary" invisible="state == 'cancelled'"/>
+                    <button name="action_send_contract_link" type="object" string="Send by Email" class="btn-info" invisible="state == 'draft'"/>
                 </header>
 
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_invoices" type="object" class="oe_stat_button" icon="fa-file-invoice-dollar" invisible="invoice_count == 0">
+                            <field name="invoice_count" string="Invoices"/>
+                        </button>
+                        <button name="action_view_amendments" type="object" class="oe_stat_button" icon="fa-edit" invisible="amendment_count == 0">
+                            <field name="amendment_count" string="Amendments"/>
+                        </button>
+                        <button name="action_create_invoice" type="object" class="oe_stat_button" icon="fa-plus-circle" invisible="state in ('draft','cancelled')" string="Create Invoice"/>
+                        <button name="action_renew_contract" type="object" class="oe_stat_button" icon="fa-refresh" invisible="can_be_renewed == False" string="Renew"/>
+                    </div>
+
+                    <div class="alert alert-warning" role="alert" invisible="is_expired == False">
+                        <strong>This contract has expired!</strong>
+                        <span>The end date (<field name="end_date"/>) has passed.</span>
+                    </div>
+                    <div class="alert alert-info" role="alert" invisible="can_be_renewed == True or is_expired == True">
+                        <span>This contract expires in <field name="days_remaining"/> days.</span>
+                    </div>
+                    <div class="alert alert-warning" role="alert" invisible="can_be_renewed == False or is_expired == True">
+                        <strong>Renewal needed!</strong>
+                        <span>Contract expires in <field name="days_remaining"/> days. Consider renewal.</span>
+                    </div>
 
                     <group>
-                        <field name="name"/>
-                        <field name="contract_date"/>
-                        <field name="partner_id"/>
-                        <field name="contract_title_name"/>
-                        <field name="contract_template_id"/>
+                        <group string="Contract Info">
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                            <field name="contract_title_name"/>
+                            <field name="contract_template_id"/>
+                            <field name="sale_order_id"/>
+                            <field name="version"/>
+                        </group>
+                        <group string="Dates &amp; Amount">
+                            <field name="contract_date"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="auto_renew"/>
+                            <field name="auto_renew_days" invisible="auto_renew == False"/>
+                            <field name="amount_total" widget="monetary" readonly="0"/>
+                            <field name="remaining_amount" widget="monetary"/>
+                            <field name="currency_id"/>
+                        </group>
                     </group>
 
                     <notebook>
-
                         <page string="Agreement Terms">
-                            <field name="agreement_terms"
-                                   widget="html"
-                                   options="{'sanitize': False}"
-                                   style="direction:rtl;"
-                                   readonly="1"
-                                   groups="base.group_user"/>
+                            <field name="agreement_terms" widget="html" options="{'sanitize': False}" style="direction:rtl;"/>
                         </page>
-                      <page string="notes">
-                        <field name="note"/>
-                      </page>
-
-                        <page string="Contract Lines" invisible="1">
-
+                        <page string="Contract Lines">
                             <field name="contract_line_ids">
                                 <list editable="bottom">
                                     <field name="product_id"/>
@@ -116,46 +180,98 @@
                                     <field name="price_subtotal"/>
                                 </list>
                             </field>
-
                             <group>
-                                <field name="subtotal_total"
-                                       widget="monetary"
-                                       readonly="1"/>
+                                <field name="subtotal_total" widget="monetary" readonly="1"/>
                             </group>
-
                         </page>
-
+                        <page string="Payment Schedule">
+                            <group>
+                                <group>
+                                    <field name="payment_installments"/>
+                                    <field name="payment_interval_days"/>
+                                </group>
+                                <group>
+                                    <button name="action_generate_payment_schedule" type="object" string="Generate Payment Schedule" class="btn-primary" confirm="This will replace existing payment schedule. Continue?"/>
+                                </group>
+                            </group>
+                            <field name="payment_schedule_ids" readonly="1">
+                                <list decoration-success="state == 'paid'" decoration-info="state == 'invoiced'" decoration-danger="state == 'pending'">
+                                    <field name="installment_number"/>
+                                    <field name="amount"/>
+                                    <field name="due_date"/>
+                                    <field name="state" widget="badge" decoration-success="state == 'paid'" decoration-info="state == 'invoiced'" decoration-danger="state == 'pending'"/>
+                                    <button name="action_create_installment_invoice" type="object" string="Create Invoice" class="btn-sm btn-primary" invisible="state != 'pending'"/>
+                                    <button name="open_invoice" type="object" string="View" class="btn-sm btn-secondary" invisible="invoice_id == False"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Invoices">
+                            <group>
+                                <field name="invoiced_amount" widget="monetary" readonly="1"/>
+                                <field name="remaining_amount" widget="monetary" readonly="1"/>
+                            </group>
+                        </page>
+                        <page string="Documents">
+                            <div class="alert alert-success" role="alert" invisible="all_documents_uploaded == False">All required documents uploaded.</div>
+                            <field name="document_ids">
+                                <list editable="bottom" decoration-success="uploaded == True">
+                                    <field name="name"/>
+                                    <field name="document_type"/>
+                                    <field name="required"/>
+                                    <field name="attachment_id"/>
+                                    <field name="uploaded" widget="boolean_toggle"/>
+                                    <field name="notes"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="note"/>
+                        </page>
                         <page string="Parties">
                             <group>
-                                <field name="first_party_name"/>
-                                <field name="first_party_signature" widget="signature"/>
-                                <field name="second_party_name"/>
-                                <field name="second_party_signature" widget="signature"/>
+                                <group string="First Party">
+                                    <field name="first_party_id"/>
+                                    <field name="first_party_name" readonly="1"/>
+                                    <field name="first_party_registry" readonly="1"/>
+                                    <field name="first_party_address" readonly="1"/>
+                                    <field name="first_party_signature" widget="signature"/>
+                                    <field name="company_stamp" widget="image" class="oe_avatar"/>
+                                </group>
+                                <group string="Second Party">
+                                    <field name="partner_id" readonly="1"/>
+                                    <field name="second_party_name" readonly="1"/>
+                                    <field name="second_party_address" readonly="1"/>
+                                    <field name="second_party_id_card" readonly="1"/>
+                                    <field name="second_party_signature" widget="signature"/>
+                                </group>
                             </group>
                         </page>
-
+                        <page string="Amendments">
+                            <button name="action_create_amendment" type="object" string="Create Amendment" class="btn-primary"/>
+                            <field name="amendment_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="user_id"/>
+                                    <field name="description"/>
+                                </list>
+                            </field>
+                        </page>
                     </notebook>
-
                 </sheet>
-
-                <chatter/>
 
             </form>
         </field>
     </record>
 
-
     <!-- ================================================= -->
-    <!--                CONTRACT TEMPLATES                 -->
+    <!--          CONTRACT TEMPLATE VIEWS                   -->
     <!-- ================================================= -->
-
     <record id="view_contract_template_tree" model="ir.ui.view">
         <field name="name">contract.template.tree</field>
         <field name="model">contract.template</field>
         <field name="arch" type="xml">
-            <list>
-                <field name="name"/>
-            </list>
+            <list><field name="name"/></list>
         </field>
     </record>
 
@@ -165,28 +281,96 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <group>
-                        <field name="name"/>
-                        <field name="content" direction="rtl" class="text-right"/>
-                    </group>
+                    <group><field name="name"/></group>
+                    <notebook>
+                        <page string="Clauses">
+                            <p class="text-muted">Available placeholders: {{company_name}}, {{partner_name}}, {{contract_name}}, {{contract_date}}, {{start_date}}, {{end_date}}, {{amount_total}}, {{currency}}</p>
+                            <field name="clause_ids" nolabel="1">
+                                <list><field name="name"/><field name="clause_type"/></list>
+                            </field>
+                        </page>
+                        <page string="Content">
+                            <field name="content" direction="rtl" class="text-right" placeholder="Write your contract terms here..."/>
+                        </page>
+                    </notebook>
                 </sheet>
-                <chatter/>
             </form>
         </field>
     </record>
 
+    <!-- ================================================= -->
+    <!--          CONTRACT CLAUSE VIEWS                     -->
+    <!-- ================================================= -->
+    <record id="view_contract_clause_tree" model="ir.ui.view">
+        <field name="name">contract.clause.tree</field>
+        <field name="model">contract.clause</field>
+        <field name="arch" type="xml">
+            <list><field name="name"/><field name="clause_type"/></list>
+        </field>
+    </record>
+
+    <record id="view_contract_clause_form" model="ir.ui.view">
+        <field name="name">contract.clause.form</field>
+        <field name="model">contract.clause</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="clause_type"/>
+                        <field name="active"/>
+                    </group>
+                    <group string="Clause Content">
+                        <field name="content" nolabel="1" placeholder="Write the clause text here..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
     <!-- ================================================= -->
-    <!--                  CONTRACT TITLE                   -->
+    <!--          CONTRACT AMENDMENT VIEWS                  -->
     <!-- ================================================= -->
+    <record id="view_contract_amendment_tree" model="ir.ui.view">
+        <field name="name">contract.amendment.tree</field>
+        <field name="model">contract.amendment</field>
+        <field name="arch" type="xml">
+            <list><field name="name"/><field name="date"/><field name="user_id"/><field name="description"/></list>
+        </field>
+    </record>
 
+    <record id="view_contract_amendment_form" model="ir.ui.view">
+        <field name="name">contract.amendment.form</field>
+        <field name="model">contract.amendment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="date"/>
+                        <field name="contract_id"/>
+                        <field name="user_id"/>
+                    </group>
+                    <group string="Amendment Details">
+                        <field name="description" nolabel="1" placeholder="Describe what changed..."/>
+                    </group>
+                    <group>
+                        <group string="Previous Value"><field name="previous_value" nolabel="1" readonly="1"/></group>
+                        <group string="New Value"><field name="new_value" nolabel="1"/></group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ================================================= -->
+    <!--          CONTRACT TITLE VIEWS                      -->
+    <!-- ================================================= -->
     <record id="view_contract_title_tree" model="ir.ui.view">
         <field name="name">sale.contract.title.tree</field>
         <field name="model">sale.contract.title</field>
         <field name="arch" type="xml">
-            <list>
-                <field name="name"/>
-            </list>
+            <list><field name="name"/></list>
         </field>
     </record>
 
@@ -195,77 +379,68 @@
         <field name="model">sale.contract.title</field>
         <field name="arch" type="xml">
             <form>
-                <sheet>
-                    <group>
-                        <field name="name"/>
-                    </group>
-                </sheet>
+                <sheet><group><field name="name"/></group></sheet>
             </form>
         </field>
     </record>
 
-
     <!-- ================================================= -->
-    <!--                   SALE ORDER                      -->
+    <!--          SALE ORDER INHERIT VIEWS (تعديل لأودو 18) -->
     <!-- ================================================= -->
-
-    <!-- Contract Button -->
     <record id="view_order_form_inherit_contract_button" model="ir.ui.view">
         <field name="name">sale.order.contract.button</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-
-            <xpath expr="//sheet/div[@class='oe_button_box']" position="inside">
-
-                <button name="action_view_contract"
-                        type="object"
-                        class="oe_stat_button"
-                        icon="fa-file-text-o">
-
+            <!-- تم استخدام hasclass() بدلاً من @class= لتوافق أودو 18 -->
+            <xpath expr="//sheet/div[hasclass('oe_button_box')]" position="inside">
+                <button name="action_view_contract" type="object" class="oe_stat_button" icon="fa-file-text-o">
                     <field name="contract_id" invisible="1"/>
-
                     <div class="o_stat_info">
+                        <span class="o_stat_value"><field name="contract_count"/></span>
                         <span>Contract</span>
                     </div>
-
                 </button>
-
             </xpath>
-
         </field>
     </record>
 
-
-    <!-- Contract Template + Title -->
     <record id="view_order_form_inherit_contract_fields" model="ir.ui.view">
         <field name="name">sale.order.contract.fields</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-
             <xpath expr="//field[@name='payment_term_id']" position="after">
                 <field name="contract_template_id"/>
                 <field name="contract_title_name"/>
             </xpath>
-
         </field>
     </record>
 
-
     <!-- ================================================= -->
-    <!--                     ACTIONS                       -->
+    <!--          ACTIONS                                  -->
     <!-- ================================================= -->
-
     <record id="action_sale_contracts" model="ir.actions.act_window">
         <field name="name">Sale Contracts</field>
         <field name="res_model">sale.contract</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">kanban,list,form</field>
+        <!-- الآن سيجد الـ Search View لأنه تم تعريفه في بداية الملف -->
+        <field name="context">{'search_default_filter_draft': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a new contract</p>
+            <p>Contracts are automatically created when a confirmed sale order has a contract template.</p>
+        </field>
     </record>
 
     <record id="action_contract_templates" model="ir.actions.act_window">
         <field name="name">Contract Templates</field>
         <field name="res_model">contract.template</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_contract_clauses" model="ir.actions.act_window">
+        <field name="name">Clauses Library</field>
+        <field name="res_model">contract.clause</field>
         <field name="view_mode">list,form</field>
     </record>
 
@@ -275,40 +450,15 @@
         <field name="view_mode">list,form</field>
     </record>
 
-
     <!-- ================================================= -->
-    <!--                       MENUS                       -->
+    <!--          MENUS                                    -->
     <!-- ================================================= -->
+    <menuitem id="menu_contract_root" name="Contracts" sequence="100" web_icon="sale_contract_auto,static/description/icon.png"/>
+    <menuitem id="menu_contract_dashboard" name="Dashboard" parent="menu_contract_root"/>
+    <menuitem id="menu_contracts" name="All Contracts" parent="menu_contract_root" action="action_sale_contracts" sequence="1"/>
+    <menuitem id="menu_contract_templates" name="Contract Templates" parent="menu_contract_root" action="action_contract_templates" sequence="10"/>
+    <menuitem id="menu_contract_clauses" name="Clauses Library" parent="menu_contract_root" action="action_contract_clauses" sequence="11"/>
+    <menuitem id="menu_contract_titles" name="Contract Titles" parent="menu_contract_root" action="action_contract_title" sequence="12"/>
+    <menuitem id="menu_contract_customers" name="Customers" parent="menu_contract_root" action="base.action_partner_form" sequence="20"/>
 
-    <menuitem id="menu_contract_root"
-              name="Contracts"
-              sequence="100"
-              web_icon="sale_contract_auto,static/description/icon.png"
-    />
-
-    <menuitem id="menu_contracts"
-              name="Contracts"
-              parent="menu_contract_root"
-              action="action_sale_contracts"
-              sequence="1"/>
-
-    <menuitem id="menu_contract_templates"
-              name="Contract Templates"
-              parent="menu_contract_root"
-              action="action_contract_templates"
-              sequence="10"/>
-
-    <menuitem id="menu_contract_titles"
-              name="Contract Titles"
-              parent="menu_contract_root"
-              action="action_contract_title"
-              sequence="11"/>
-
-    <menuitem id="menu_contract_customers"
-              name="Customers"
-              parent="menu_contract_root"
-              action="base.action_partner_form"
-              sequence="20"/>
-
-</data>
 </odoo>

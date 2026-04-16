@@ -5,14 +5,19 @@
         <field name="name">investment.subscription.list</field>
         <field name="model">investment.subscription</field>
         <field name="arch" type="xml">
-            <list>
-                <field name="name"/>
+            <list decoration-success="grace_period_passed == True" decoration-muted="grace_period_passed == False">
+                <field name="customer_membership_number"/>
+                <field name="name" optional="hide"/>
                 <field name="partner_id"/>
                 <field name="project_id"/>
+                <field name="return_calculation_type"/>
+                <field name="investment_date"/>
+                <field name="returns_start_date"/>
+                <field name="grace_period_passed" invisible="1"/>
+                <field name="months_until_returns_start"/>
                 <field name="share_count"/>
                 <field name="amount"/>
-                <field name="expected_monthly_return"/>
-                <field name="total_actual_returns"/>
+                <field name="expected_period_return"/>
                 <field name="payment_state" widget="badge"/>
                 <field name="state" widget="badge"/>
             </list>
@@ -54,11 +59,26 @@
                     <field name="state" widget="statusbar"/>
                 </header>
                 
+                <!-- ⚠️ تنبيه فترة السكون بالشهور -->
+                <div class="alert alert-info" role="alert" invisible="grace_period_passed == True or state != 'active'">
+                    <strong>Grace Period Active!</strong> 
+                    Returns will start on <field name="returns_start_date"/> 
+                    (<field name="months_until_returns_start"/> months and <field name="days_until_returns_start"/> days remaining)
+                </div>
+                
+                <div class="alert alert-success" role="alert" invisible="grace_period_passed == False or state != 'active'">
+                    <strong>Grace Period Passed!</strong> 
+                    Return payments are now available.
+                </div>
+                
                 <sheet>
                     <div class="oe_title">
                         <h1>
-                            <field name="name" readonly="1"/>
+                            <field name="customer_membership_number" readonly="1"/>
                         </h1>
+                        <h3 class="text-muted">
+                            Ref: <field name="name" readonly="1"/>
+                        </h3>
                     </div>
                     
                     <group>
@@ -70,17 +90,26 @@
                             <field name="investment_date"/>
                         </group>
                         
+                        <group string="Return Schedule (from Project)">
+                            <field name="return_calculation_type" readonly="1"/>
+                            <field name="grace_period_months" readonly="1"/>
+                            <field name="returns_start_date" readonly="1"/>
+                            <field name="grace_period_passed" readonly="1"/>
+                            <field name="months_until_returns_start" readonly="1"/>
+                        </group>
+                    </group>
+                    
+                    <group>
                         <group string="Financials">
                             <field name="share_count"/>
                             <field name="share_value"/>
                             <field name="amount"/>
-                            <field name="expected_monthly_return"/>
-                            <field name="analytic_account_id"/>
+                            <field name="return_percentage" readonly="1"/>
+                            <field name="expected_period_return"/>
                         </group>
-                    </group>
-                    
-                    <group string="Returns Summary">
-                        <group>
+                        
+                        <group string="Returns Summary">
+                            <field name="capital_return_date" readonly="1"/>
                             <field name="total_actual_returns"/>
                             <field name="last_return_date"/>
                         </group>
@@ -98,8 +127,10 @@
                         <page string="Actual Returns History">
                             <field name="actual_return_ids">
                                 <list>
+                                    <field name="customer_membership_number"/>
                                     <field name="period_name"/>
                                     <field name="date_from"/>
+                                    <field name="date_to"/>
                                     <field name="expected_amount"/>
                                     <field name="actual_amount"/>
                                     <field name="state" widget="badge"/>
@@ -122,6 +153,7 @@
         <field name="model">investment.subscription</field>
         <field name="arch" type="xml">
             <search>
+                <field name="customer_membership_number"/>
                 <field name="name"/>
                 <field name="partner_id"/>
                 <field name="project_id"/>
@@ -129,9 +161,11 @@
                 <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
                 <filter string="Paid" name="paid" domain="[('state', '=', 'paid')]"/>
                 <filter string="Active" name="active" domain="[('state', '=', 'active')]"/>
+                <filter string="Grace Period Passed" name="grace_passed" domain="[('grace_period_passed', '=', True)]"/>
+                <filter string="In Grace Period" name="in_grace" domain="[('grace_period_passed', '=', False)]"/>
                 <group expand="0" string="Group By">
                     <filter string="Project" name="project" context="{'group_by': 'project_id'}"/>
-                    <filter string="Investor" name="investor" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Return Type" name="return_type" context="{'group_by': 'return_calculation_type'}"/>
                 </group>
             </search>
         </field>

@@ -4,6 +4,7 @@
     <t t-call="website.layout">
       <t t-set="title">عرض العقد</t>
       <div class="container mt-4" dir="rtl">
+
         <h2>العقد:
           <t t-esc="contract.name"/>
         </h2>
@@ -17,7 +18,7 @@
         </p>
         <p>
           <strong>الإجمالي:</strong>
-          <span t-field="contractايليت.amount_total"/>
+          <span t-field="contract.amount_total"/>
           <span t-field="contract.currency_id"/>
         </p>
         <form t-att-action="'/my/contracts/%s/sign' % contract.id" method="post">
