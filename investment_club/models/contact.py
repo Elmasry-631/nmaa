@@ -5,3 +5,6 @@ class Contact(models.Model):
 
 
     code = fields.Char(string="Code")
+
+
+

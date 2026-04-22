@@ -6,7 +6,6 @@
         <field name="model">investment.actual.return</field>
         <field name="arch" type="xml">
             <list decoration-success="state == 'paid'" decoration-muted="state == 'cancelled'">
-                <field name="customer_membership_number"/>
                 <field name="name" optional="hide"/>
                 <field name="period_name"/>
                 <field name="partner_id"/>
@@ -42,7 +41,6 @@
                 <sheet>
                     <div class="oe_title">
                         <h1>
-                            <field name="customer_membership_number" readonly="1"/>
                         </h1>
                         <h3 class="text-muted">
                             Ref: <field name="name" readonly="1"/>
@@ -96,7 +94,6 @@
         <field name="model">investment.actual.return</field>
         <field name="arch" type="xml">
             <search>
-                <field name="customer_membership_number"/>
                 <field name="name"/>
                 <field name="partner_id"/>
                 <field name="project_id"/>
@@ -119,7 +116,4 @@
         <field name="view_mode">list,form</field>
         <field name="search_view_id" ref="view_actual_return_search"/>
     </record>
-
-    <!-- Menu -->
-    <menuitem id="menu_actual_return" name="Return Payments" parent="menu_investment_root" action="action_actual_return" sequence="6"/>
 </odoo>

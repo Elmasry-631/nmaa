@@ -5,9 +5,9 @@
         <field name="model">investment.membership</field>
         <field name="arch" type="xml">
             <list decoration-warning="renewal_status == 'due'" decoration-danger="renewal_status == 'overdue'">
-                <field name="customer_membership_number"/>
                 <field name="membership_number" optional="hide"/>
                 <field name="partner_id"/>
+                <field name="investor_code"/>
                 <field name="club_id"/>
                 <field name="initial_membership_fee"/>
                 <field name="annual_subscription_fee"/>
@@ -65,6 +65,14 @@
                 </div>
                 
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object" name="action_open_invoice" class="oe_stat_button" icon="fa-file-text-o">
+                            <field name="invoice_count" widget="statinfo" string="Invoice"/>
+                        </button>
+                        <button type="object" name="action_open_investment" class="oe_stat_button">
+                            <field name="investment_count" widget="statinfo" string="Investment"/>
+                        </button>
+                    </div>
                     <!-- العنوان الرئيسي - Internal Ref -->
                     <div class="oe_title">
                         <h1>
@@ -76,8 +84,8 @@
                     <group>
                         <group string="Customer &amp; Club">
                             <!-- كود العضوية فوق -->
-                            <field name="customer_membership_number" string="Membership Code"/>
                             <field name="partner_id"/>
+                            <field name="investor_code"/>
                             <field name="club_id"/>
                         </group>
                         
@@ -130,7 +138,6 @@
                         <page string="Investments">
                             <field name="investment_ids">
                                 <list>
-                                    <field name="customer_membership_number"/>
                                     <field name="name"/>
                                     <field name="project_id"/>
                                     <field name="share_count"/>
@@ -160,8 +167,8 @@
                 date_stop="expiry_date"
                 mode="month"
                 color="renewal_status">
-                <field name="customer_membership_number"/>
                 <field name="partner_id"/>
+                <field name="investor_code"/>
                 <field name="club_id"/>
                 <field name="next_renewal_amount"/>
                 <field name="renewal_status"/>
@@ -175,10 +182,10 @@
         <field name="model">investment.membership</field>
         <field name="arch" type="xml">
             <search>
-                <field name="customer_membership_number"/>
                 <field name="partner_id"/>
                 <field name="club_id"/>
                 <field name="membership_number"/>
+                <field name="investor_code"/>
             </search>
         </field>
     </record>
@@ -189,5 +196,5 @@
         <field name="view_mode">list,form,calendar</field>
     </record>
 
-    <menuitem id="menu_investment_membership" name="Memberships" parent="menu_investment_root" action="action_investment_membership" sequence="3"/>
+
 </odoo>
