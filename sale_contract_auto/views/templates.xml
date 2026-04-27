@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
   <template id="portal_contract_page" name="Contract View Page">
-    <t t-call="website.layout">
+    <t t-call="portal.portal_layout">
       <t t-set="title">عرض العقد</t>
       <div class="container mt-4" dir="rtl">
-
         <h2>العقد:
           <t t-esc="contract.name"/>
         </h2>
@@ -19,7 +18,6 @@
         <p>
           <strong>الإجمالي:</strong>
           <span t-field="contract.amount_total"/>
-          <span t-field="contract.currency_id"/>
         </p>
         <form t-att-action="'/my/contracts/%s/sign' % contract.id" method="post">
           <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
