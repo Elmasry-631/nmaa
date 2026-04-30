@@ -53,6 +53,15 @@ class MembershipTerminateWizard(models.TransientModel):
         store=True
     )
 
+    termination_attachment = fields.Binary(
+        string='Attachment',
+        attachment=True
+    )
+
+    termination_attachment_name = fields.Char(
+        string='Attachment Filename'
+    )
+
     increase_amount = fields.Float(
         string='Increase Amount',
         compute='_compute_financials',
@@ -208,19 +217,32 @@ class MembershipTerminateWizard(models.TransientModel):
 
     def _get_default_income_account(self):
         """Get the default income account for recording company share."""
-        # First try to get from product category default
-        income_account = self.env['ir.property']._get(
-            'property_account_income_categ_id', 'product.category'
-        )
+        self.ensure_one()
+        company = self.membership_id.company_id or self.env.company
+
+        # First try to get from the default product category income account.
+        default_category = self.env.ref('product.product_category_all', raise_if_not_found=False)
+        income_account = default_category.with_company(company).property_account_income_categ_id \
+            if default_category else self.env['account.account']
         if income_account:
             return income_account
 
-        # Fallback: company default income account
-        company = self.membership_id.company_id or self.env.company
-        if company.account_income_id:
-            return company.account_income_id
+        category = self.env['product.category'].with_company(company).search([
+            ('property_account_income_categ_id', '!=', False),
+        ], limit=1)
+        if category.property_account_income_categ_id:
+            return category.property_account_income_categ_id
 
-        return False
+        # Fallback: find a regular income account for the company.
+        income_account = self.env['account.account'].search([
+            ('company_ids', 'in', company.ids),
+            ('deprecated', '=', False),
+            ('account_type', 'in', ('income', 'income_other')),
+        ], limit=1)
+        if income_account:
+            return income_account
+
+        return self.env['account.account']
 
     def _create_company_income_entry(self, membership, income_amount, description):
         """Create a journal entry recording company income from termination.
@@ -244,9 +266,8 @@ class MembershipTerminateWizard(models.TransientModel):
         if not income_account:
             return False
 
-        # Try to get bank account from the refund journal
-        bank_account = self.refund_journal_id.payment_debit_account_id or \
-            self.refund_journal_id.default_account_id
+        # Try to get liquidity account from the refund journal.
+        bank_account = self.refund_journal_id.default_account_id
 
         if bank_account:
             # Journal entry using the refund journal (bank)
@@ -312,6 +333,19 @@ class MembershipTerminateWizard(models.TransientModel):
 
         return False
 
+    def _attach_termination_document(self, membership):
+        """Attach the termination document to the membership record."""
+        if self.termination_attachment:
+            self.env['ir.attachment'].create({
+                'name': self.termination_attachment_name or 'membership_termination_attachment',
+                'res_model': membership._name,
+                'res_id': membership.id,
+                'type': 'binary',
+                'datas': self.termination_attachment,
+                'datas_fname': self.termination_attachment_name or 'membership_termination_attachment',
+                'mimetype': 'application/octet-stream',
+            })
+
     def action_confirm_termination(self):
         self.ensure_one()
         if not self.reason:
@@ -371,6 +405,8 @@ class MembershipTerminateWizard(models.TransientModel):
             'termination_refund_amount': self.refund_amount,
             'termination_deduction': self.actual_deduction,
         })
+
+        self._attach_termination_document(membership)
 
         # ===== 4. Post chatter message =====
         summary = _(
