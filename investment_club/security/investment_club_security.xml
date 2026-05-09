@@ -2,8 +2,12 @@
 <odoo>
 
     <!-- ===== Access Rules - Loaded after models are installed ===== -->
+    
+    <!-- Module Access Control: These rules grant access only when module_access_enabled is True -->
+    <!-- When the checkbox is unchecked, users have no access (as set in ir.model.access.csv) -->
+    <!-- When the checkbox is checked, these rules grant proper permissions -->
 
-    <!-- Project: Restrict creation to managers when setting is enabled -->
+    <!-- Project: User Read Only (when module access enabled) -->
     <record id="investment_project_user_rule" model="ir.rule">
         <field name="name">Investment Project: User Read Only</field>
         <field name="model_id" ref="model_investment_project"/>
@@ -14,7 +18,7 @@
         <field name="perm_create" eval="False"/>
         <field name="perm_unlink" eval="False"/>
     </record>
-
+    
     <record id="investment_project_manager_rule" model="ir.rule">
         <field name="name">Investment Project: Manager Full Access</field>
         <field name="model_id" ref="model_investment_project"/>
