@@ -7,92 +7,46 @@
     <!-- When the checkbox is unchecked, users have no access (as set in ir.model.access.csv) -->
     <!-- When the checkbox is checked, these rules grant proper permissions -->
 
-    <!-- Project: User Read Only (when module access enabled) -->
-    <record id="investment_project_user_rule" model="ir.rule">
-        <field name="name">Investment Project: User Read Only</field>
+    <!-- With a single group, keep rules simple: full access to module models -->
+
+    <record id="investment_project_access_rule" model="ir.rule">
+        <field name="name">Investment Project: Access</field>
         <field name="model_id" ref="model_investment_project"/>
         <field name="domain_force">[(1, '=', 1)]</field>
-        <field name="groups" eval="[(4, ref('group_investment_user'))]"/>
-        <field name="perm_read" eval="True"/>
-        <field name="perm_write" eval="True"/>
-        <field name="perm_create" eval="False"/>
-        <field name="perm_unlink" eval="False"/>
-    </record>
-    
-    <record id="investment_project_manager_rule" model="ir.rule">
-        <field name="name">Investment Project: Manager Full Access</field>
-        <field name="model_id" ref="model_investment_project"/>
-        <field name="domain_force">[(1, '=', 1)]</field>
-        <field name="groups" eval="[(4, ref('group_investment_manager'))]"/>
+        <field name="groups" eval="[(4, ref('group_investment_access'))]"/>
         <field name="perm_read" eval="True"/>
         <field name="perm_write" eval="True"/>
         <field name="perm_create" eval="True"/>
         <field name="perm_unlink" eval="True"/>
     </record>
 
-    <!-- Investment: User can view own investments, Manager can view all -->
-    <record id="investment_subscription_user_rule" model="ir.rule">
-        <field name="name">Investment Subscription: User View Own</field>
-        <field name="model_id" ref="model_investment_subscription"/>
-        <field name="domain_force">[('partner_id', '=', user.partner_id.id)]</field>
-        <field name="groups" eval="[(4, ref('group_investment_user'))]"/>
-        <field name="perm_read" eval="True"/>
-        <field name="perm_write" eval="True"/>
-        <field name="perm_create" eval="True"/>
-        <field name="perm_unlink" eval="False"/>
-    </record>
-
-    <record id="investment_subscription_manager_rule" model="ir.rule">
-        <field name="name">Investment Subscription: Manager Full Access</field>
+    <record id="investment_subscription_access_rule" model="ir.rule">
+        <field name="name">Investment Subscription: Access</field>
         <field name="model_id" ref="model_investment_subscription"/>
         <field name="domain_force">[(1, '=', 1)]</field>
-        <field name="groups" eval="[(4, ref('group_investment_manager'))]"/>
+        <field name="groups" eval="[(4, ref('group_investment_access'))]"/>
         <field name="perm_read" eval="True"/>
         <field name="perm_write" eval="True"/>
         <field name="perm_create" eval="True"/>
         <field name="perm_unlink" eval="True"/>
     </record>
 
-    <!-- Membership: User can view own, Manager can view all -->
-    <record id="investment_membership_user_rule" model="ir.rule">
-        <field name="name">Investment Membership: User View Own</field>
-        <field name="model_id" ref="model_investment_membership"/>
-        <field name="domain_force">[('partner_id', '=', user.partner_id.id)]</field>
-        <field name="groups" eval="[(4, ref('group_investment_user'))]"/>
-        <field name="perm_read" eval="True"/>
-        <field name="perm_write" eval="True"/>
-        <field name="perm_create" eval="True"/>
-        <field name="perm_unlink" eval="False"/>
-    </record>
-
-    <record id="investment_membership_manager_rule" model="ir.rule">
-        <field name="name">Investment Membership: Manager Full Access</field>
+    <record id="investment_membership_access_rule" model="ir.rule">
+        <field name="name">Investment Membership: Access</field>
         <field name="model_id" ref="model_investment_membership"/>
         <field name="domain_force">[(1, '=', 1)]</field>
-        <field name="groups" eval="[(4, ref('group_investment_manager'))]"/>
+        <field name="groups" eval="[(4, ref('group_investment_access'))]"/>
         <field name="perm_read" eval="True"/>
         <field name="perm_write" eval="True"/>
         <field name="perm_create" eval="True"/>
         <field name="perm_unlink" eval="True"/>
     </record>
 
-    <!-- Actual Return: User can view own, Manager can view all -->
-    <record id="actual_return_user_rule" model="ir.rule">
-        <field name="name">Actual Return: User View Own</field>
-        <field name="model_id" ref="model_investment_actual_return"/>
-        <field name="domain_force">[('subscription_id.partner_id', '=', user.partner_id.id)]</field>
-        <field name="groups" eval="[(4, ref('group_investment_user'))]"/>
-        <field name="perm_read" eval="True"/>
-        <field name="perm_write" eval="True"/>
-        <field name="perm_create" eval="False"/>
-        <field name="perm_unlink" eval="False"/>
-    </record>
-
-    <record id="actual_return_manager_rule" model="ir.rule">
-        <field name="name">Actual Return: Manager Full Access</field>
+    <record id="actual_return_access_rule" model="ir.rule">
+        <field name="name">Actual Return: Access</field>
         <field name="model_id" ref="model_investment_actual_return"/>
         <field name="domain_force">[(1, '=', 1)]</field>
-        <field name="groups" eval="[(4, ref('group_investment_manager'))]"/>
+        <field name="groups" eval="[(4, ref('group_investment_access'))]"/>
         <field name="perm_read" eval="True"/>
         <field name="perm_write" eval="True"/>
         <field name="perm_create" eval="True"/>
