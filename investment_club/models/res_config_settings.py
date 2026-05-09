@@ -98,3 +98,11 @@ class ResConfigSettings(models.TransientModel):
         default=False,
         help='Investments require manager approval before activation.',
     )
+
+    # ===== Module Access Control =====
+    module_access_enabled = fields.Boolean(
+        string='Enable Investment Club Module Access',
+        config_parameter='investment_club.module_access_enabled',
+        default=True,
+        help='When checked, users have full access to the Investment Club module. When unchecked, users have no access.',
+    )
